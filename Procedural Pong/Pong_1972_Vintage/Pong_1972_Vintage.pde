@@ -1,29 +1,32 @@
 //Global Variables
 float xBall, yBall, BallDiameter; 
-float x1LeftNet, y1Net, x2LeftNet, y2Net;
+float x1LeftNet, y1LeftNet, x2LeftNet, y2LeftNet;
+float x1RightNet, y1RightNet, x2RightNet, y2RightNet;
+float x1MiddleLine, y1MiddleLine, x2MiddleLine, y2MiddleLine;
 float x1LeftPaddle, y1LeftPaddle, widthPaddle, heightPaddle, x1RightPaddle, y1RightPaddle;
+float xLeftScore, yLeftScore, widthScore, heightScore, xRightScore, yRightScore;
 
 void setup() {
   //Geomtery Communication and Variables for GUI Ratios
   size(700, 500); //Landscape-orientation //fullScreen(); //displayWidth, displayHeight
   population();
-  x1LeftPaddle = x1LeftNet;
-  y1LeftPaddle = height*1/2; //Too low
-  widthPaddle = width*1/100;
-  heightPaddle = height*1/5;
-  x1RightPaddle = width*39/40;
-  y1RightPaddle = y1LeftPaddle;
+  xLeftScore = width*1/4;
+  xRightScore = width*3/4;
+  yLeftScore = yRightScore = height*0;
+  widthScore = width*1/10;
+  heightScore = height*1/10;
+  
 }//End setup
 
 void draw() {
   ellipse(xBall, yBall, BallDiameter, BallDiameter);
-  rect(x1LeftPaddle, y1LeftPaddle, widthPaddle, heightPaddle); //Left paddle
-  rect(x1RightPaddle, y1RightPaddle, widthPaddle, heightPaddle); //Right paddle
-  //line(x1NetRightTop, y1NetRightTop, x1NetRightBottom, y1NetRightBottom); //Right net
-  line(x1LeftNet, y1Net, x2LeftNet, y2Net); //Left net
-  //line(xMiddleLineTop, yMiddleLineTop, xMiddleLineBottom, yMiddleLineBottom); //Middle line
-  //rect(); //Score left
-  //rect(); //Score right
+  rect(x1LeftPaddle, y1LeftPaddle, widthPaddle, heightPaddle); 
+  rect(x1RightPaddle, y1RightPaddle, widthPaddle, heightPaddle); 
+  line(x1RightNet, y1RightNet, x2RightNet, y2RightNet); //Right net
+  line(x1LeftNet, y1LeftNet, x2LeftNet, y2LeftNet); //Left net
+  line(x1MiddleLine, y1MiddleLine, x2MiddleLine, y2MiddleLine); //Middle line
+  rect(xLeftScore, yLeftScore, widthScore, heightScore); //Score left
+  rect(xRightScore, yRightScore, widthScore, heightScore); //Score right
 }//End draw
 
 void keyPressed() {
