@@ -15,7 +15,7 @@ void setup() {
 
 void draw() {
   ellipse(xBall, yBall, BallDiameter, BallDiameter); //Make a ball 
-  rect(x1LeftPaddle, y1LeftPaddle, widthPaddle, heightPaddle); 
+  leftPaddle(); //Another purpose of developer written functions
   rect(x1RightPaddle, y1RightPaddle, widthPaddle, heightPaddle); 
   line(x1RightNet, y1RightNet, x2RightNet, y2RightNet); //Right net
   line(x1LeftNet, y1LeftNet, x2LeftNet, y2LeftNet); //Left net
