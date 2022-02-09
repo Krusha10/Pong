@@ -9,18 +9,12 @@ float xLeftScore, yLeftScore, widthScore, heightScore, xRightScore, yRightScore;
 void setup() {
   //Geomtery Communication and Variables for GUI Ratios
   size(700, 500); //Landscape-orientation //fullScreen(); //displayWidth, displayHeight
-  population();
-  
-  xLeftScore = width*1/4;
-  xRightScore = width*3/4;
-  yLeftScore = yRightScore = height*0;
-  widthScore = width*1/10;
-  heightScore = height*1/10;
+  population(); //One purpose of developer-written function 
   
 }//End setup
 
 void draw() {
-  ellipse(xBall, yBall, BallDiameter, BallDiameter);
+  ellipse(xBall, yBall, BallDiameter, BallDiameter); //Make a ball 
   rect(x1LeftPaddle, y1LeftPaddle, widthPaddle, heightPaddle); 
   rect(x1RightPaddle, y1RightPaddle, widthPaddle, heightPaddle); 
   line(x1RightNet, y1RightNet, x2RightNet, y2RightNet); //Right net
