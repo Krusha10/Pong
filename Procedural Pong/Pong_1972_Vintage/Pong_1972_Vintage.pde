@@ -13,8 +13,8 @@ void setup() {
   
 }//End setup
 
-void draw() {
-  ellipse(xBall, yBall, BallDiameter, BallDiameter); //Make a ball 
+void draw(){
+  ball();
   leftPaddle(); //Another purpose of developer written functions
   rightPaddle();
   line(x1RightNet, y1RightNet, x2RightNet, y2RightNet); //Right net
