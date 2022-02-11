@@ -17,8 +17,17 @@ void population(){
   //
   y1LeftPaddle = (height*1/2) - (heightPaddle*1/2);
   y1RightPaddle = (height*1/2)  - (heightPaddle*1/2);
-  x1RightPaddle = (width*39/40) - (widthPaddle*1/2);
+  x1RightPaddle = (width*39/40) - (widthPaddle);
   //
   xLeftScore = (width*1/4) - (widthScore*1/2);
   xRightScore = (width*3/4) - (widthScore*1/2);
+  //
+  while(xMove==0) xMove = int(random(-2,2));
+  while(yMove==0) yMove = int(random(-2,2));
+  /*
+  while(yMove==0 || yMove==0) {
+    xMove = int(random(-2,2));
+    yMove = int(random(-2,2));
+  }
+  */
 }//End population
