@@ -17,11 +17,14 @@ void ballMove() {
 }//End ballMove
 
 void goalCheck() {
-  if ( xBall >= x1RightNet-(BallDiameter*1/2) )
-  {
+  if ( xBall >= x1RightNet-(BallDiameter*1/2) ) {
     rigthGoalScore = true;
     xBall = width-BallDiameter*1/2;
   }//End rightNet
+  if ( xBall >= x1LeftNet-(BallDiameter*1/2) ) {
+    rigthGoalScore = true;
+    xBall = width-BallDiameter*1/2;
+  }//End leftNet
 }//End goalCheck
 
 void ballStart() {
