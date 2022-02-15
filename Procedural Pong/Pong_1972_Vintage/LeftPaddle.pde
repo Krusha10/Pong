@@ -1,3 +1,6 @@
+//Global variables 
+int leftPaddleSpeed = 1;
+
 void leftPaddle(){
   leftPaddleStart(); //Might have to move outside draw()
 }//End leftPaddle
