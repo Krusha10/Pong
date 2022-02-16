@@ -8,7 +8,8 @@ float xLeftScore, yLeftScore, widthScore, heightScore, xRightScore, yRightScore;
 
 void setup() {
   //Geomtery Communication and Variables for GUI Ratios
-  size(700, 500); //Landscape-orientation //fullScreen(); //displayWidth, displayHeight
+  size(700, 500); //Landscape-orientation //
+  //fullScreen(displayWidth, displayHeight);
   population(); //One purpose of developer-written function 
   
 }//End setup
@@ -27,6 +28,7 @@ void draw(){
 void keyPressed() {
   //right paddle - arrow keys
   rightPaddlekeyPressed();
+  leftPaddlekeyPressed();
 }//End keyPressed
 
 void mousePressed() {

@@ -24,3 +24,7 @@ void ballMove() {
 void ballStart() {
   ellipse(xBall, yBall, BallDiameter, BallDiameter);
 }//End ballStart
+
+void paddleContact(){
+   if ( xBall<=(x1RightPaddle)+(BallDiameter*1/2) || xBall>=(y1RightPaddle)-(BallDiameter*1/2) ) xMove*=-30;
+}
