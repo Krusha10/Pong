@@ -1,5 +1,5 @@
 //Global Variables
-float xBall, yBall, BallDiameter; 
+float xBall, yBall, ballDiameter; 
 float x1LeftNet, y1LeftNet, x2LeftNet, y2LeftNet;
 float x1RightNet, y1RightNet, x2RightNet, y2RightNet;
 float x1MiddleLine, y1MiddleLine, x2MiddleLine, y2MiddleLine;
@@ -15,6 +15,7 @@ void setup() {
 }//End setup
 
 void draw(){
+  fill(255,200,200);
   ball();
   leftPaddle(); //Another purpose of developer written functions
   rightPaddleDraw();

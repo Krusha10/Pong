@@ -5,8 +5,8 @@ Boolean smoothLeftUp = false, smoothLeftDown = false;
 void leftPaddle(){
   leftPaddleStart(); //Might have to move outside draw()
   leftPaddleStop();
-  if (smoothLeftUp==true) y1LeftPaddle -= 2;
-  if (smoothLeftDown==true) y1LeftPaddle += 2;
+  if (smoothLeftUp==true) y1LeftPaddle -= 3;
+  if (smoothLeftDown==true) y1LeftPaddle += 3;
 }
 
 void leftPaddlekeyPressed(){

@@ -4,7 +4,7 @@ Varibles should be organized to ease human reading
 void population(){
   xBall = width*1/2;
   yBall = height*1/2;
-  BallDiameter = width*1/50;
+  ballDiameter = width*1/50;
   x2MiddleLine= x1MiddleLine = width*1/2;
   x1LeftPaddle = x2LeftNet = x1LeftNet = width*1/40;
   x2RightNet = x1RightNet = width*39/40;

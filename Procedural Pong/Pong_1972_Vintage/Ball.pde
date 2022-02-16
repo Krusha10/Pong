@@ -7,26 +7,26 @@ void ball() {
 }//End ball()
 
 void ballMove() {
-  if ( xBall < x1LeftPaddle+widthPaddle+(BallDiameter*1/2) && yBall > y1LeftPaddle && yBall < y1LeftPaddle+heightPaddle ) xMove*=-1;
+  if ( xBall < x1LeftPaddle+widthPaddle+(ballDiameter*1/2) && yBall > y1LeftPaddle && yBall < y1LeftPaddle+heightPaddle ) xMove*=-1;
   if ( xBall >= x1RightPaddle && yBall > y1RightPaddle && yBall < y1RightPaddle+heightPaddle ) xMove*=-1;
   
-  if ( xBall >= x1RightNet+(BallDiameter*1/2) ) {
-    xBall = width-BallDiameter*1/2;
-  } else if ( xBall <= x1LeftNet-(BallDiameter*1/2) ) {
-    xBall = (width*0)+(BallDiameter*1/2);
+  if ( xBall >= x1RightNet+(ballDiameter*1/2) ) {
+    xBall = width-ballDiameter*1/2;
+  } else if ( xBall <= x1LeftNet-(ballDiameter*1/2) ) {
+    xBall = (width*0)+(ballDiameter*1/2);
   } else {
     xBall += xMove;
     yBall += yMove;
   }
   //
-  if ( yBall<=(height*0)+(BallDiameter*1/2) || yBall>=height-(BallDiameter*1/2) ) yMove*=-1;
+  if ( yBall<=(height*0)+(ballDiameter*1/2) || yBall>=height-(ballDiameter*1/2) ) yMove*=-1;
   //
 }//End ballMove
 
 void ballStart() {
-  ellipse(xBall, yBall, BallDiameter, BallDiameter);
+  ellipse(xBall, yBall, ballDiameter, ballDiameter);
 }//End ballStart
 
 void paddleContact(){
-   if ( xBall<=(x1RightPaddle)+(BallDiameter*1/2) || xBall>=(y1RightPaddle)-(BallDiameter*1/2) ) xMove*=-30;
+   if ( xBall<=(x1RightPaddle)+(ballDiameter*1/2) || xBall>=(y1RightPaddle)-(ballDiameter*1/2) ) xMove*=-30;
 }

@@ -5,8 +5,8 @@ Boolean smoothRightUp = false, smoothRightDown = false;
 void rightPaddleDraw(){
   rightPaddleStart();
   rightPaddleStop();
-  if (smoothRightUp==true) y1RightPaddle -= 2;
-  if (smoothRightDown==true) y1RightPaddle += 2;
+  if (smoothRightUp==true) y1RightPaddle -= 3;
+  if (smoothRightDown==true) y1RightPaddle += 3;
 }
 
 void rightPaddlekeyPressed(){
