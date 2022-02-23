@@ -2,9 +2,9 @@
 //
 //Global Variables 
 PFont titleFont;
-int titleX, titleY, titleWidth, titleHeight;
+int titleX, titleY, titleWidth, titleHeight, secondX, secondY, secondWidth, secondHeight;
 //
-String title = "Wahoo!";
+String title = "Wahoo!", secondTitle = "Hello World";
 color blueInk = #76D1CE;
 color nightModePinkInk = #FF43B1;
 color resetColor = #000000;
@@ -23,6 +23,10 @@ void textSetup()
   titleY = height*1/10;
   titleWidth = width*3/5;
   titleHeight = height*1/10;
+  secondX = width*1/5;
+  secondY = height*3/10;
+  secondWidth = width*3/5;
+  secondHeight = height*1/10;
   textLayout();
   //
 }//End textSetup()
@@ -30,22 +34,24 @@ void textSetup()
 void textLayout() 
 {
   rect(titleX, titleY, titleWidth, titleHeight);//Only used for design 
+  rect(secondX, secondY, secondWidth, secondHeight);
 }//End textLayout()
 //
-void preDrawText() 
+void preDrawText(float height, color ink, int alignHorizontal, int alignVerticle, PFont font) 
 {
-  fill(blueInk);
-  textAlign(CENTER, CENTER);
-  textFont(titleFont, 52); //Chnage number untill it fits 
+  fill(ink);
+  textAlign(alignHorizontal, alignVerticle);
+  textFont(font, height); //52 //Chnage number untill it fits 
 }//End preDrawText()
-void textDraw() 
+void textDraw(float height, color ink, int alignHorizontal, int alignVerticle, PFont font, String string, float xRect, float yRec, float widthRec, float heightRec, color resetColor) 
 {
-  preDrawText();
-  text(title, titleX, titleY, titleWidth, titleHeight);
-  textReset();
+  preDrawText( height,  ink,  alignHorizontal,  alignVerticle, font);
+  textSize(height); //height is wrong// 
+  text(string, xRect, yRec, widthRec, heightRec);
+  textReset(resetColor);
 }//End textDraw()
 //
-void textReset()
+void textReset(color resetColor)
 {
   fill(resetColor); // Ink to default 
 }//End textReset()

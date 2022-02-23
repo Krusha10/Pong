@@ -7,8 +7,8 @@ void setup() {
 
 void draw() {
   //
-  textDraw(); //Left Score
-  textDraw(); //Right Score
+  textDraw(height, blueInk, CENTER, CENTER, titleFont, title, titleX, titleY, titleWidth, titleHeight, resetColor); //Left Score
+  textDraw(height, blueInk, CENTER, TOP, titleFont, secondTitle, secondX, secondY, secondWidth, secondHeight, resetColor); //Right Score
 }//End draw()
 
 void keyPressed() {
