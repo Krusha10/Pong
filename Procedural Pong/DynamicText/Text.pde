@@ -46,7 +46,7 @@ void preDrawText(float height, color ink, int alignHorizontal, int alignVerticle
 void textDraw(float height, color ink, int alignHorizontal, int alignVerticle, PFont font, String string, float xRect, float yRec, float widthRec, float heightRec, color resetColor) 
 {
   preDrawText( height,  ink,  alignHorizontal,  alignVerticle, font);
-  textSize(height); //height is wrong// 
+  textSize(textCalculator(height, widthRec, string)); //height is wrong// 
   text(string, xRect, yRec, widthRec, heightRec);
   textReset(resetColor);
 }//End textDraw()
@@ -55,3 +55,15 @@ void textReset(color resetColor)
 {
   fill(resetColor); // Ink to default 
 }//End textReset()
+//
+float textCalculator(float size, float recWidth, String string) 
+{
+  textSize(size);
+  while (textWidth(string) > recWidth) 
+  {
+    size = size * 0.9;
+    textSize(size);
+  }//End While
+  size = size * 0.64; //Additional decrease for Font
+  return size;
+}//End textCalculator

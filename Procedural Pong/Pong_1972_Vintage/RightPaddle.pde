@@ -1,23 +1,25 @@
 //Globle Variables 
-int rightPaddleSpeed = 1; 
+int rightPaddleSpeed = 8; 
 Boolean smoothRightUp = false, smoothRightDown = false;
 
 void rightPaddleDraw(){
   rightPaddleStart();
   rightPaddleStop();
-  if (smoothRightUp==true) y1RightPaddle -= 3;
-  if (smoothRightDown==true) y1RightPaddle += 3;
+  //if (smoothRightUp==true) y1RightPaddle -= 3;
+  //if (smoothRightDown==true) y1RightPaddle += 3;
 }
 
 void rightPaddlekeyPressed(){
   if (key == CODED && keyCode == UP ) {
-    smoothRightUp = true;
-    smoothRightDown = false;
+    //smoothRightUp = true;
+    //smoothRightDown = false;
+    y1RightPaddle -= rightPaddleSpeed;
   }
   
   if (key == CODED && keyCode == DOWN) {
-    smoothRightUp = false;
-    smoothRightDown = true;
+    //smoothRightUp = false;
+    //smoothRightDown = true;
+    y1RightPaddle -= rightPaddleSpeed;
   }
   
   if (key == CODED && keyCode == LEFT) {

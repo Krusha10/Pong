@@ -1,23 +1,25 @@
 //Global variables 
-int leftPaddleSpeed = 1;
+int leftPaddleSpeed = 8;
 Boolean smoothLeftUp = false, smoothLeftDown = false;
 
 void leftPaddle(){
   leftPaddleStart(); //Might have to move outside draw()
   leftPaddleStop();
-  if (smoothLeftUp==true) y1LeftPaddle -= 3;
-  if (smoothLeftDown==true) y1LeftPaddle += 3;
+  //if (smoothLeftUp==true) y1LeftPaddle -= 3;
+  //if (smoothLeftDown==true) y1LeftPaddle += 3;
 }
 
 void leftPaddlekeyPressed(){
   if (key == 'w' || key == 'W' ) {
-    smoothLeftUp = true;
-    smoothLeftDown = false;
+    //smoothLeftUp = true;
+    //smoothLeftDown = false;
+    y1LeftPaddle -= leftPaddleSpeed; 
   }
   
   if (key == 's' || key == 'S' ) {
-    smoothLeftUp = false;
-    smoothLeftDown = true;
+    //smoothLeftUp = false;
+    //smoothLeftDown = true;
+    y1LeftPaddle += leftPaddleSpeed;
   }
   
   if (key == 'd' || key == 'D' ) {
