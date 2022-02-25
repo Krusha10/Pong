@@ -15,7 +15,6 @@ void setup() {
 }//End setup
 
 void draw(){
-  fill(255,200,200);
   ball();
   leftPaddle(); //Another purpose of developer written functions
   rightPaddleDraw();
@@ -28,8 +27,8 @@ void draw(){
 
 void keyPressed() {
   //right paddle - arrow keys
-  rightPaddlekeyPressed();
-  leftPaddlekeyPressed();
+  //rightPaddlekeyPressed();
+  //leftPaddlekeyPressed();
 }//End keyPressed
 
 void mousePressed() {

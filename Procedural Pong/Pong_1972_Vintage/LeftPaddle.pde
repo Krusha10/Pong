@@ -9,7 +9,7 @@ void leftPaddle(){
   //if (smoothLeftDown==true) y1LeftPaddle += 3;
 }
 
-void leftPaddlekeyPressed(){
+/*void leftPaddlekeyPressed(){
   if (key == 'w' || key == 'W' ) {
     //smoothLeftUp = true;
     //smoothLeftDown = false;
@@ -27,9 +27,11 @@ void leftPaddlekeyPressed(){
     smoothLeftDown = false;
   }
 }
+*/
 
 void leftPaddleStart(){
   rect(x1LeftPaddle, y1LeftPaddle, widthPaddle, heightPaddle); 
+  y1LeftPaddle = yBall - widthPaddle;
 }//End LeftPaddleStart
 
 void leftPaddleStop(){

@@ -4,12 +4,12 @@ Boolean smoothRightUp = false, smoothRightDown = false;
 
 void rightPaddleDraw(){
   rightPaddleStart();
-  rightPaddleStop();
+  //rightPaddleStop();
   //if (smoothRightUp==true) y1RightPaddle -= 3;
   //if (smoothRightDown==true) y1RightPaddle += 3;
 }
 
-void rightPaddlekeyPressed(){
+/*void rightPaddlekeyPressed(){
   if (key == CODED && keyCode == UP ) {
     //smoothRightUp = true;
     //smoothRightDown = false;
@@ -19,7 +19,7 @@ void rightPaddlekeyPressed(){
   if (key == CODED && keyCode == DOWN) {
     //smoothRightUp = false;
     //smoothRightDown = true;
-    y1RightPaddle -= rightPaddleSpeed;
+    y1RightPaddle += rightPaddleSpeed;
   }
   
   if (key == CODED && keyCode == LEFT) {
@@ -27,12 +27,11 @@ void rightPaddlekeyPressed(){
     smoothRightDown = false;
   }
 }
+*/
 
 void rightPaddleStart() {
   rect(x1RightPaddle, y1RightPaddle, widthPaddle, heightPaddle); 
-}
-
-void rightPaddleStop(){
+  y1RightPaddle = yBall - heightPaddle*1/2;
   if(y1RightPaddle - (heightPaddle*0) < 0) {
     y1RightPaddle += widthPaddle;
   }
@@ -40,3 +39,13 @@ void rightPaddleStop(){
     y1RightPaddle -= widthPaddle;
   }
 }
+
+/*void rightPaddleStop(){
+  if(y1RightPaddle - (heightPaddle*0) < 0) {
+    y1RightPaddle += widthPaddle;
+  }
+  if(y1RightPaddle + (heightPaddle) > height) {
+    y1RightPaddle -= widthPaddle;
+  }
+}
+*/
