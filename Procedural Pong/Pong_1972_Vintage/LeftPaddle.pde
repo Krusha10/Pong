@@ -1,15 +1,22 @@
 //Global variables 
-int leftPaddleSpeed = 8;
+int leftPaddleSpeed = 0;
 Boolean smoothLeftUp = false, smoothLeftDown = false;
 
 void leftPaddle(){
   leftPaddleStart(); //Might have to move outside draw()
   leftPaddleStop();
-  //if (smoothLeftUp==true) y1LeftPaddle -= 3;
-  //if (smoothLeftDown==true) y1LeftPaddle += 3;
+  if (smoothLeftUp==true) y1LeftPaddle -= leftPaddleSpeed;
+  if (smoothLeftDown==true) y1LeftPaddle += leftPaddleSpeed;
 }
 
-/*void leftPaddlekeyPressed(){
+void leftPaddlekeyPressed(){
+  
+  if (leftPaddleSpeed == 0 ){
+    if (key=='S' || key=='s') leftPaddleSpeed = 2;
+    if (key=='R' || key=='r') leftPaddleSpeed = 5;
+    if (key=='F' || key=='f') leftPaddleSpeed = 10;
+  }
+  
   if (key == 'w' || key == 'W' ) {
     //smoothLeftUp = true;
     //smoothLeftDown = false;
@@ -27,11 +34,10 @@ void leftPaddle(){
     smoothLeftDown = false;
   }
 }
-*/
+
 
 void leftPaddleStart(){
   rect(x1LeftPaddle, y1LeftPaddle, widthPaddle, heightPaddle); 
-  y1LeftPaddle = yBall - widthPaddle;
 }//End LeftPaddleStart
 
 void leftPaddleStop(){
