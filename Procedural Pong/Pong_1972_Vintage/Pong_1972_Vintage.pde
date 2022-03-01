@@ -18,8 +18,8 @@ void draw(){
   if (leftPaddleSpeed > 0 && rightPaddleSpeed > 0) {
     StartGame();
   } else {
-    println("To select speed for left paddle, pree s for slow, r for regular, f for fast")
-    println("To select speed for right paddle, pree a for slow, b for regular, c for fast")
+    println("To select speed for left paddle, pree s for slow, r for regular, f for fast");
+    println("To select speed for right paddle, pree a for slow, b for regular, c for fast");
   }
 }//End draw
 
