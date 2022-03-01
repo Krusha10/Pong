@@ -15,6 +15,7 @@ void rightPaddlekeyPressed(){
     if (key=='A' || key=='a') rightPaddleSpeed = 2;
     if (key=='B' || key=='b') rightPaddleSpeed = 5;
     if (key=='C' || key=='c') rightPaddleSpeed = 10;
+  }
   
   if (key == CODED && keyCode == UP ) {
     //smoothRightUp = true;
