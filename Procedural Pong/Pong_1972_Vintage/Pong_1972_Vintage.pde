@@ -8,13 +8,15 @@ float xLeftScore, yLeftScore, widthScore, heightScore, xRightScore, yRightScore;
 
 void setup() {
   //Geomtery Communication and Variables for GUI Ratios
-  size(700, 500); //Landscape-orientation //
+  size(500, 700); //Landscape-orientation 
+  mediaQuiry();
   //fullScreen(displayWidth, displayHeight);
   population(); //One purpose of developer-written function 
   
 }//End setup
 
 void draw(){
+  mediaQuiry();
   if (leftPaddleSpeed > 0 && rightPaddleSpeed > 0) {
     StartGame();
   } else {
