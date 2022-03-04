@@ -1,8 +1,16 @@
 void mediaQuiry() {
-  
-  String orientation = (width >= height) ? "Game On Dude " : "Please Rotate";
-  println(orientation);
-  
+
+  String widthWorks = (displayWidth >= width) ? " Game On " : "forced width"; 
+  String heightWorks = (displayHeight >= height) ? " Game On " : "forced height";
+  String orientation = (width >= height) ? go() : adjustScreen();
+  println(widthWorks, "\t\t", heightWorks, "\t\t", orientation);
+}
+
+String go() 
+{
+  geometryCheck = true;
+  loop();
+  return "Landscape: Game On";
 }
 
 String adjustScreen()

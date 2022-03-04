@@ -1,5 +1,4 @@
 int xMove, yMove; //see population 
-Boolean rigthGoalScore = false;
 
 void ball() {
   ballStart();
@@ -24,6 +23,7 @@ void ballMove() {
 }//End ballMove
 
 void ballStart() {
+  fill(#FBFF95);
   ellipse(xBall, yBall, ballDiameter, ballDiameter);
 }//End ballStart
 

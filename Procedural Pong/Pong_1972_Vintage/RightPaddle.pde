@@ -36,7 +36,8 @@ void rightPaddlekeyPressed(){
 }
 
 
-void rightPaddleStart() {
+void rightPaddleStart() {  
+  fill(#FF40DC);
   rect(x1RightPaddle, y1RightPaddle, widthPaddle, heightPaddle); 
 }
 

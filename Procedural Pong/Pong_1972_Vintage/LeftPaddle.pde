@@ -37,6 +37,7 @@ void leftPaddlekeyPressed(){
 
 
 void leftPaddleStart(){
+  fill(#FF40DC);
   rect(x1LeftPaddle, y1LeftPaddle, widthPaddle, heightPaddle); 
 }//End LeftPaddleStart
 
