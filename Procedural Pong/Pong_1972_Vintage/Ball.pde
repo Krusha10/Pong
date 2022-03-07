@@ -31,4 +31,6 @@ void ballStart() {
 
 void paddleContact() {
   if ( xBall<=(x1RightPaddle)+(ballDiameter*1/2) || xBall>=(y1RightPaddle)-(ballDiameter*1/2) ) xMove*=-30;
+  xMove = int(random(3, 10));
+  yMove = int(random(3, 10));
 }

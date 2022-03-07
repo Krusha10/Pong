@@ -27,10 +27,12 @@ void setup() {
 
 void draw(){
   background(#00ACED);
-  mediaQuiry();
+  if (geometryCheck == false) mediaQuiry();
   if (leftPaddleSpeed > 0 && rightPaddleSpeed > 0) {
     StartGame();
   } else {
+    println("For single player: press p");
+    println("For screen saver: press t");
     printText1();
     //println("To select speed for left paddle, pree s for slow, r for regular, f for fast");
     //println("To select speed for right paddle, pree a for slow, b for regular, c for fast");
