@@ -5,7 +5,13 @@ color nightModePinkInk = #FF43B1, resetColor = #000000;
 //
 void textSetup()
 {
-  titleFont = createFont("Georgia", 55);
+  titleFont = createFont("Georgia", 10);
+}
+
+void scoreBoardRectengle() 
+{
+  rect(xLeftScore, yLeftScore, widthScore, heightScore); //Score left
+  rect(xRightScore, yRightScore, widthScore, heightScore); //Score right
 }
 //
 void preDrawText(float height, color ink, int alignHorizontal, int alignVerticle, PFont font) 

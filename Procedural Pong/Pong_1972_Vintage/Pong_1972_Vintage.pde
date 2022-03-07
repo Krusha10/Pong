@@ -21,7 +21,6 @@ void setup() {
   if (heightRatio > displayHeight) heightRatio = displayHeight;
   */
   mediaQuiry();
-  //fullScreen(displayWidth, displayHeight);
   population(); //One purpose of developer-written function 
   
 }//End setup
