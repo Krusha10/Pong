@@ -3,8 +3,10 @@
 void printText1() {
   String opening = "LET'S PLAY PONG";
   String start = "--Click The Screen And Select Speed For The Paddles--";
-  String instructions1 = "** To select speed for left paddle, prees s for slow, r for regular, f for fast **";
-  String instructions2 = "** To select speed for right paddle, prees a for slow, b for regular, c for fast **";
+  String instructions1 = "* To select speed for left paddle, prees s for slow, r for regular, f for fast ";
+  String instructions2 = "* To select speed for right paddle, prees a for slow, b for regular, c for fast ";
+  String singlePlayer = "* For single player (Computer VS. Player) : press p";
+  String screenSaver = "* For screen saver (Computer VS. Computer) : press t";
 
   //textFont(titleFont);
   textAlign(CENTER);
@@ -19,6 +21,8 @@ void printText1() {
   fill(#FF0E05);
   text(instructions1, width/2, 340);
   text(instructions2, width/2, 370);
+  text(singlePlayer, width/2, 400);
+  text(screenSaver, width/2, 430);
 }
 
 void rightWinner() 

@@ -4,12 +4,13 @@ Boolean smoothRightUp = false, smoothRightDown = false, singlePlayer = false;
 
 void rightPaddleDraw() {
   rightPaddleStart();
+  rightPaddleStop();
   //
   if (singlePlayer == true) {
     y1RightPaddle = yBall - heightPaddle*1/2;
   }
   //
-  rightPaddleStop();
+
   if (smoothRightUp==true) y1RightPaddle -= rightPaddleSpeed;
   if (smoothRightDown==true) y1RightPaddle += rightPaddleSpeed;
 }
@@ -29,7 +30,7 @@ void rightPaddlekeyPressed() {
   if (key == CODED && keyCode == UP ) {
     //smoothRightUp = true;
     //smoothRightDown = false;
-    y1RightPaddle -= rightPaddleSpeed;
+    //y1RightPaddle -= rightPaddleSpeed;
   }
 
   if (key == CODED && keyCode == DOWN) {
