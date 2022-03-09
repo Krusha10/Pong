@@ -29,7 +29,7 @@ void rightWinner()
 {
   String rWinner = "WINNER";
   String rightPlayer = "Right Player Wins";
-  
+
   textAlign(CENTER);
 
   textSize(60);
@@ -44,7 +44,7 @@ void leftWinner()
 {
   String lWinner = "WINNER";
   String leftPlayer = "left Player Wins";
-  
+
   textAlign(CENTER);
 
   textSize(60);
@@ -53,4 +53,19 @@ void leftWinner()
   textSize(30);
   fill(#62FF80);
   text(leftPlayer, width/2, 170);
+}
+
+void gameEnds() {
+  
+  String goalScore = "You Scored A Goal";
+  String playAgain = "Press Q to play again";
+  
+   textAlign(CENTER);
+
+  textSize(60);
+  fill(#62FF80);
+  text(goalScore, width/2, 150);
+  textSize(30);
+  fill(#62FF80);
+  text(playAgain, width/2, 170);
 }

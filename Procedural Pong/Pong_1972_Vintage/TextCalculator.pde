@@ -1,11 +1,12 @@
 //Global variables
 PFont titleFont;
+
 color darkPinkInk = #D65083;
 color nightModePinkInk = #FF43B1, resetColor = #000000;
 //
 void textSetup()
 {
-  titleFont = createFont("Georgia", 50);
+  titleFont = createFont("Georgia", 55);
 }
 //
 void preDrawText(float height, color ink, int alignHorizontal, int alignVerticle, PFont font) 
@@ -36,6 +37,6 @@ float textCalculator(float size, String string, float widthRec)
     size = size * 0.9;
     textSize(size);
   }//End While
-  size = size * 0.12; //Additional decrease for Font
+  size = size * 0.15; //Additional decrease for Font
   return size;
 }//End textCalculator

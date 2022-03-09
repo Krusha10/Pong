@@ -30,7 +30,7 @@ void rightPaddlekeyPressed() {
   if (key == CODED && keyCode == UP ) {
     //smoothRightUp = true;
     //smoothRightDown = false;
-    //y1RightPaddle -= rightPaddleSpeed;
+    y1RightPaddle -= rightPaddleSpeed;
   }
 
   if (key == CODED && keyCode == DOWN) {
@@ -56,7 +56,7 @@ void rightPaddleStop() {
   if(y1RightPaddle <= height*0) {
     y1RightPaddle = height*0;
   }
-  if(y1RightPaddle + (heightPaddle) >= height) {
+  if(y1RightPaddle + (heightPaddle) > height) {
     y1RightPaddle = height - heightPaddle;
    }
 }

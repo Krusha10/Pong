@@ -46,7 +46,7 @@ void preDrawText(float height, color ink, int alignHorizontal, int alignVerticle
 void textDraw(float height, color ink, int alignHorizontal, int alignVerticle, PFont font, String string, float xRect, float yRec, float widthRec, float heightRec, color resetColor) 
 {
   preDrawText( height,  ink,  alignHorizontal,  alignVerticle, font);
-  textSize(textCalculator(height, widthRec, string)); //height is wrong// 
+  textSize(textCalculator(height, widthRec, string));  
   text(string, xRect, yRec, widthRec, heightRec);
   textReset(resetColor);
 }//End textDraw()
