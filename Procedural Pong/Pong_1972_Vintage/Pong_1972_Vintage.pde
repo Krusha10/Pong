@@ -10,8 +10,9 @@ PImage bckgroundImage;
 int y;
 
 void setup() {
+  fullScreen();
   //Geomtery Communication and Variables for GUI Ratios
-  size(700, 500); //Landscape-orientation
+  //size(700, 500); //Landscape-orientation
   /*int widthRatio = displayWidth;
    int heightRatio = displayHeight;
    fullScreen(widthRatio, heightRatio);
