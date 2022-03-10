@@ -6,21 +6,12 @@ float x1MiddleLine, y1MiddleLine, x2MiddleLine, y2MiddleLine;
 float x1LeftPaddle, y1LeftPaddle, widthPaddle, heightPaddle, x1RightPaddle, y1RightPaddle;
 float xLeftScore, yLeftScore, widthScore, heightScore, xRightScore, yRightScore;
 Boolean geometryCheck = false, restart = false;
-PImage bckgroundImage; 
-int y;
 
 void setup() {
   fullScreen();
+  println(width, height);
   //Geomtery Communication and Variables for GUI Ratios
   //size(700, 500); //Landscape-orientation
-  /*int widthRatio = displayWidth;
-   int heightRatio = displayHeight;
-   fullScreen(widthRatio, heightRatio);
-   widthRatio = width;
-   heightRatio = height;
-   if (widthRatio > displayWidth) widthRatio = displayWidth;
-   if (heightRatio > displayHeight) heightRatio = displayHeight;
-   */
   mediaQuiry();
   population(); //One purpose of developer-written function
 }//End setup

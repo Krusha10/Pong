@@ -9,9 +9,9 @@ void ball() {
 }//End ball()
 
 void ballMove() {
-  if ( xBall < x1LeftPaddle+widthPaddle+(ballDiameter*1/2) && yBall > y1LeftPaddle && yBall < y1LeftPaddle+heightPaddle ) xMove*=-1.5;
-  if ( xBall >= x1RightPaddle && yBall > y1RightPaddle && yBall < y1RightPaddle+heightPaddle ) xMove*=-1.5;
-  if ( yBall<=(height*0)+(ballDiameter*1/2) || yBall>=height-(ballDiameter*1/2) ) yMove*=-1;
+  if ( xBall < x1LeftPaddle+widthPaddle+(ballDiameter*1/2) && yBall > y1LeftPaddle && yBall < y1LeftPaddle+heightPaddle ) xMove+=-1;
+  if ( xBall >= x1RightPaddle && yBall > y1RightPaddle && yBall < y1RightPaddle+heightPaddle ) xMove+=-1;
+  if ( yBall<=(height*0)+(ballDiameter*1/2) || yBall>=height-(ballDiameter*1/2) ) yMove*= -1;
   //
   if ( xBall >= x1RightNet+(ballDiameter*1/2) ) {
     xBall = width-ballDiameter*1/2;
