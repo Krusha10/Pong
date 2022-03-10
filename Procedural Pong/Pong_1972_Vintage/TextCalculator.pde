@@ -1,6 +1,6 @@
 //Global variables
 PFont titleFont;
-
+//
 color darkPinkInk = #D65083;
 color nightModePinkInk = #FF43B1, resetColor = #000000;
 //

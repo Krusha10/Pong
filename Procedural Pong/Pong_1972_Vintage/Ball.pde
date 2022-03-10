@@ -16,9 +16,11 @@ void ballMove() {
   if ( xBall >= x1RightNet+(ballDiameter*1/2) ) {
     xBall = width-ballDiameter*1/2;
     rightGoal = true;
+    ball();
   } else if ( xBall <= x1LeftNet-(ballDiameter*1/2) ) {
     xBall = (width*0)+(ballDiameter*1/2);
     leftGoal = true;
+    ball();
   } else {
     xBall += xMove;
     yBall += yMove;

@@ -9,11 +9,10 @@ Boolean geometryCheck = false, restart = false;
 
 void setup() {
   fullScreen();
-  println(width, height);
   //Geomtery Communication and Variables for GUI Ratios
   //size(700, 500); //Landscape-orientation
-  mediaQuiry();
   population(); //One purpose of developer-written function
+  textSetup();
 }//End setup
 
 void draw() {
@@ -21,8 +20,10 @@ void draw() {
   if (geometryCheck == false) mediaQuiry();
   //
   if (leftPaddleSpeed > 0 && rightPaddleSpeed > 0) {
-    if (rightGoal == true || leftGoal == true) {
-      resetGame();
+    if (rightGoalScore == 5 || leftGoalScore == 5) {
+      if (rightGoal == true || leftGoal == true) {
+        resetGame();
+    }
     } else {
       if (restart == false) StartGame();
     }

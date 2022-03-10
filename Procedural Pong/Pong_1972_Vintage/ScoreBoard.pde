@@ -6,11 +6,11 @@ void scoreSetup() {
 }
 
 void scoreDraw() {
-  if (rightGoal == true) rightGoalScore = 1; 
+  if (rightGoal == true) leftGoalScore += 1; 
   textDraw(height, darkPinkInk, CENTER, CENTER, titleFont, str(rightGoalScore), xRightScore, yRightScore, widthScore, heightScore);
   //fill(#FF40DC);
   //text(rightGoalScore, 300, 100);
-  if (leftGoal == true) leftGoalScore = 1;
+  if (leftGoal == true) rightGoalScore += 1;
   textDraw(height, darkPinkInk, CENTER, CENTER, titleFont, str(leftGoalScore), xLeftScore, yLeftScore, widthScore, heightScore);
 }
 
