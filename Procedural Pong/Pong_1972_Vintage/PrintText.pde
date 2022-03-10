@@ -57,15 +57,11 @@ void leftWinner()
 
 void gameEnds() {
   
-  String goalScore = "You Scored A Goal";
   String playAgain = "Press Q to play again";
   
    textAlign(CENTER);
 
-  textSize(60);
-  fill(#62FF80);
-  text(goalScore, width/2, 150);
-  textSize(30);
+  textSize(40);
   fill(#62FF80);
   text(playAgain, width/2, 170);
 }

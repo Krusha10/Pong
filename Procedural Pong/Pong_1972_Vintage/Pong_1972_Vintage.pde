@@ -8,9 +8,9 @@ float xLeftScore, yLeftScore, widthScore, heightScore, xRightScore, yRightScore;
 Boolean geometryCheck = false, restart = false;
 
 void setup() {
-  //fullScreen();
+  fullScreen();
   //Geomtery Communication and Variables for GUI Ratios
-  size(700, 500); //Landscape-orientation
+  //size(700, 500); //Landscape-orientation
   population(); //One purpose of developer-written function
   textSetup();
 }//End setup
