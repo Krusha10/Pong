@@ -1,4 +1,6 @@
 int xMove, yMove; //see population 
+float ballResetx;
+float ballResety;
 int rightGoalScore=0, leftGoalScore=0;
 Boolean rightGoal=false, leftGoal=false;
 
@@ -9,18 +11,20 @@ void ball() {
 }//End ball()
 
 void ballMove() {
-  if ( xBall < x1LeftPaddle+widthPaddle+(ballDiameter*1/2) && yBall > y1LeftPaddle && yBall < y1LeftPaddle+heightPaddle ) xMove+=-1;
-  if ( xBall >= x1RightPaddle && yBall > y1RightPaddle && yBall < y1RightPaddle+heightPaddle ) xMove+=-1;
-  if ( yBall<=(height*0)+(ballDiameter*1/2) || yBall>=height-(ballDiameter*1/2) ) yMove*= -1;
+  if ( xBall < x1LeftPaddle+widthPaddle+(ballDiameter*1/2) && yBall > y1LeftPaddle && yBall < y1LeftPaddle+heightPaddle ) xMove *=-1;
+  if ( xBall >= x1RightPaddle && yBall > y1RightPaddle && yBall < y1RightPaddle+heightPaddle ) xMove *=-1;
+  if ( yBall<=(height*0)+(ballDiameter*1/2) || yBall>=height-(ballDiameter*1/2) ) yMove *= -1;
   //
   if ( xBall >= x1RightNet+(ballDiameter*1/2) ) {
-    xBall = width-ballDiameter*1/2;
-    rightGoal = true;
-    ball();
+    //xBall = width-ballDiameter*1/2;
+    while(xMove != 0 && yMove!= 0){
+      xMove =0;
+      yMove =0;
+    }
+    rightGoal = true; 
   } else if ( xBall <= x1LeftNet-(ballDiameter*1/2) ) {
-    xBall = (width*0)+(ballDiameter*1/2);
-    leftGoal = true;
-    ball();
+    //xBall = (width*0)+(ballDiameter*1/2);
+    leftGoal = true; 
   } else {
     xBall += xMove;
     yBall += yMove;

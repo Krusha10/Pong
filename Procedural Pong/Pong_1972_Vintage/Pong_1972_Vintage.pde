@@ -8,9 +8,9 @@ float xLeftScore, yLeftScore, widthScore, heightScore, xRightScore, yRightScore;
 Boolean geometryCheck = false, restart = false;
 
 void setup() {
-  fullScreen();
+  //fullScreen();
   //Geomtery Communication and Variables for GUI Ratios
-  //size(700, 500); //Landscape-orientation
+  size(700, 500); //Landscape-orientation
   population(); //One purpose of developer-written function
   textSetup();
 }//End setup
@@ -21,10 +21,10 @@ void draw() {
   //
   if (leftPaddleSpeed > 0 && rightPaddleSpeed > 0) {
     if (rightGoalScore == 5 || leftGoalScore == 5) {
-      if (rightGoal == true || leftGoal == true) {
-        resetGame();
-    }
-    } else {
+      //if (rightGoal == true || leftGoal == true) {
+      resetGame();
+    //}
+      } else {
       if (restart == false) StartGame();
     }
   } else {
@@ -36,7 +36,11 @@ void keyPressed() {
   //right paddle - arrow keys
   rightPaddlekeyPressed();
   leftPaddlekeyPressed();
-  if (key == 'Q' || key == 'q') restart = false;
+  if (key == 'Q' || key == 'q') {
+    restart = false;
+    rightGoalScore = 0;
+    leftGoalScore = 0;
+  }
 }//End keyPressed
 
 void mousePressed() {
