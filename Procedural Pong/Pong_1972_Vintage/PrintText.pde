@@ -5,7 +5,7 @@ void printText1() {
   String start = "--Click The Screen And Select Speed For The Paddles--";
   String instructions1 = "* To select speed for left paddle, prees s for slow, r for regular, f for fast ";
   String instructions2 = "* To select speed for right paddle, prees a for slow, b for regular, c for fast ";
-  String singlePlayer = "* For single player (Computer VS. Player) : press p";
+  String singlePlayer = "* For single player (Computer VS. Player) : press p and select right paddle speed";
   String screenSaver = "* For screen saver (Computer VS. Computer) : press t";
 
   //textFont(titleFont);
@@ -33,11 +33,11 @@ void rightWinner()
   textAlign(CENTER);
 
   textSize(60);
-  fill(#62FF80);
+  fill(#FF58E3);
   text(rWinner, width/2, 150);
   textSize(30);
-  fill(#62FF80);
-  text(rightPlayer, width/2, 170);
+  fill(#FF58E3);
+  text(rightPlayer, width/2, 200);
 }
 
 void leftWinner() 
@@ -48,11 +48,11 @@ void leftWinner()
   textAlign(CENTER);
 
   textSize(60);
-  fill(#62FF80);
+  fill(#FF9558);
   text(lWinner, width/2, 150);
   textSize(30);
-  fill(#62FF80);
-  text(leftPlayer, width/2, 170);
+  fill(#FF9558);
+  text(leftPlayer, width/2, 200);
 }
 
 void gameEnds() {
@@ -62,6 +62,6 @@ void gameEnds() {
    textAlign(CENTER);
 
   textSize(40);
-  fill(#62FF80);
-  text(playAgain, width/2, 170);
+  fill(#AE40EA);
+  text(playAgain, width/2, 300);
 }

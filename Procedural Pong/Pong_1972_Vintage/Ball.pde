@@ -19,12 +19,14 @@ void ballMove() {
      //xBall = width-ballDiameter*1/2;
      xBall = width*1/2;
      yBall = height*1/2;
-     rightGoal = true; 
+     rightGoal = true;
+     rightGoalScore++;
    } else if ( xBall <= x1LeftNet-(ballDiameter*1/2) ) {
      //xBall = (width*0)+(ballDiameter*1/2);
      xBall = width*1/2;
      yBall = height*1/2;
      leftGoal = true; 
+     leftGoalScore++;
    } else {
      xBall += xMove;
      yBall += yMove;

@@ -1,6 +1,6 @@
 //Global variables 
 int leftPaddleSpeed = 0;
-Boolean smoothLeftUp = false, smoothLeftDown = false, screenSaver = false;
+Boolean smoothLeftUp = false, smoothLeftDown = false, screenSaver = false, singlePlayer = false;
 
 void leftPaddle(){
   leftPaddleStart(); //Might have to move outside draw()
@@ -8,6 +8,10 @@ void leftPaddle(){
   if (screenSaver == true) {
     y1LeftPaddle = yBall-heightPaddle*1/2;
     y1RightPaddle = yBall-heightPaddle*1/2;
+  }
+  //
+  if (singlePlayer == true) {
+    y1LeftPaddle = yBall - heightPaddle*1/2;
   }
   //
   leftPaddleStop();
@@ -23,11 +27,18 @@ void leftPaddlekeyPressed(){
       leftPaddleSpeed = 20;
       rightPaddleSpeed = 20;
     }
+  
+  if (leftPaddleSpeed == 0 ) {
+    if (key=='P' || key=='p') {
+      singlePlayer = true;
+      leftPaddleSpeed = 5;
+    }
+    
     if (key=='S' || key=='s') leftPaddleSpeed = 2;
     if (key=='R' || key=='r') leftPaddleSpeed = 5;
     if (key=='F' || key=='f') leftPaddleSpeed = 10;
   }
-  
+  }
   if (key == 'w' || key == 'W' ) {
     //smoothLeftUp = true;
     //smoothLeftDown = false;
@@ -48,7 +59,7 @@ void leftPaddlekeyPressed(){
 
 
 void leftPaddleStart(){
-  fill(#FF40DC);
+  fill(#FF9558);
   rect(x1LeftPaddle, y1LeftPaddle, widthPaddle, heightPaddle); 
 }//End LeftPaddleStart
 

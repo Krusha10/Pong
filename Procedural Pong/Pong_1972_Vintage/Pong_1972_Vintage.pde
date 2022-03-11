@@ -21,12 +21,10 @@ void draw() {
   //
   if (leftPaddleSpeed > 0 && rightPaddleSpeed > 0) {
     if (rightGoalScore == 5 || leftGoalScore == 5) {
-      //if (rightGoal == true || leftGoal == true) {
       resetGame();
-    //}
-      } else {
+    } else {
       if (restart == false) StartGame();
-    }
+    } 
   } else {
     printText1();
   }

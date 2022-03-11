@@ -1,15 +1,10 @@
 //Globle Variables 
 int rightPaddleSpeed = 0; 
-Boolean smoothRightUp = false, smoothRightDown = false, singlePlayer = false;
+Boolean smoothRightUp = false, smoothRightDown = false;
 
 void rightPaddleDraw() {
   rightPaddleStart();
   rightPaddleStop();
-  //
-  if (singlePlayer == true) {
-    y1RightPaddle = yBall - heightPaddle*1/2;
-  }
-  //
 
   if (smoothRightUp==true) y1RightPaddle -= rightPaddleSpeed;
   if (smoothRightDown==true) y1RightPaddle += rightPaddleSpeed;
@@ -17,15 +12,10 @@ void rightPaddleDraw() {
 
 void rightPaddlekeyPressed() {
 
-  if (rightPaddleSpeed == 0 ) {
-    if (key=='P' || key=='p') {
-      singlePlayer = true;
-      rightPaddleSpeed = 5;
-    } 
     if (key=='A' || key=='a') rightPaddleSpeed = 2;
     if (key=='B' || key=='b') rightPaddleSpeed = 5;
     if (key=='C' || key=='c') rightPaddleSpeed = 10;
-  }
+ 
 
   if (key == CODED && keyCode == UP ) {
     //smoothRightUp = true;
@@ -47,7 +37,7 @@ void rightPaddlekeyPressed() {
 
 
 void rightPaddleStart() {  
-  fill(#FF40DC);
+  fill(#FF58E3);
   rect(x1RightPaddle, y1RightPaddle, widthPaddle, heightPaddle);
 }
 
