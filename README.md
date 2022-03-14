@@ -9,3 +9,4 @@ CS30
 - Color the paddles and balls
 - Use colored background
 - Have an instruction page
+- Make the ball change it's speed as the game proceeds 
