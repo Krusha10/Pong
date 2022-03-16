@@ -4,8 +4,8 @@ Paddle paddles;
 //
 void setup() 
 {
-  //size(700, 500);
-  fullScreen();
+  size(700, 500);
+  //fullScreen();
   //Screen size checker 
   //
   //constructor 
@@ -21,14 +21,14 @@ void draw()
 { 
   myBall.draw();
   yourBall.draw();
-  if (myBall.xBall == yourBall.xBall) myBall.xSpeed*= -1;
-  if (myBall.yBall == yourBall.yBall) myBall.ySpeed*= -1;
+  ballCollisions();
   paddles.draw();
 }//End draw()
 //
 void keyPressed() 
 {
-  
+  //Press W-S-D for left paddle
+  //Press UP-DOWN-LEFT arroes for right paddle
 }//End keypressed()
 //
 void mousePressed() 

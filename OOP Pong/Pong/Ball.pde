@@ -1,3 +1,7 @@
+/* Ideas
+  change the ball color as game proceeds
+*/
+
 class Ball 
 {
   //Global variables
@@ -17,8 +21,10 @@ class Ball
   void draw() {
     fill(colour);
     ellipse(xBall, yBall, diameter, diameter);
+    //
     move();
     bounceBall();
+    bounceOffPaddle();
   }//End draw
   //
   void move() {
@@ -29,5 +35,10 @@ class Ball
   void bounceBall() { //Not A Bounce Off Paddles
     if (xBall - diameter*1/2 < width*0 || xBall + diameter*1/2 > width) xSpeed *= -1;
     if (yBall - diameter*1/2 < height*0 || yBall + diameter*1/2 > height) ySpeed *= -1;
-  }
+  }//End Bounce
+  //
+  void bounceOffPaddle() {
+   if ( xBall < xLeftPaddle + widthPaddle +(diameter*1/2) && yBall > yLeftPaddle && yBall < yLeftPaddle+ heightPaddle ) xSpeed *=-1;
+   if ( xBall >= xRightPaddle && yBall > y1RightPaddle && yBall < yRightPaddle + heightPaddle ) xSpeed *=-1;
+  }//End bounceOffPaddle
 }//End Ball
