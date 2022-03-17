@@ -9,8 +9,8 @@ void setup()
   //Screen size checker 
   //
   //constructor 
-  myBall = new Ball(width*1/2, height*1/2, width*1/35, color(random(0, 255), random(255), random(255)), width/width, height/height); //This line could be anywhere
-  yourBall = new Ball(width*3/4, height*1/2, width*1/35, color(random(0, 255), random(255), random(255)), width/width, height/height);
+  myBall = new Ball(width, height); //This line could be anywhere
+  yourBall = new Ball(width, height);
   paddles = new Paddle(width*1/40, height*1/3, (width*39/40) - (width*1/100), height*1/3, width*1/50, height*1/5);
   println("Exciting.......not exciting"); //Ball object imediately deleted, because it's a local variable
   //exit(); //Exit button TBA
@@ -19,6 +19,7 @@ void setup()
 //
 void draw() 
 { 
+  background(#030303);
   myBall.draw();
   yourBall.draw();
   ballCollisions();
