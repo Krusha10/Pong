@@ -8,7 +8,7 @@ class Ball
   private float xBall, yBall, diameter, xStart, yStart, xDirection, yDirection; 
   private color colour, colourReset = #FFFFFF; 
   private int xSpeed, ySpeed;
-  private Boolean nightMode = false;
+  private Boolean nightMode = false, xBallGoal = false;
   //
   //int ballCount = 10; //knows how many instances of Ball there are
   //Not just myBall and yourBall
@@ -28,11 +28,11 @@ class Ball
     this.ySpeed = int (random (1, 6));
     xDirection = 0;
     while (xDirection == 0) {
-      this.xDirection = int (random(-2, 2));
+      this.xDirection = int (random(-3, 3));
     }
     yDirection = 0;
     while (yDirection == 0) {
-      this.yDirection = int (random(-2, 2));
+      this.yDirection = int (random(-3, 3));
     }
   }//End Constructor
   //
@@ -41,8 +41,7 @@ class Ball
     ellipse(xBall, yBall, diameter, diameter);
     fill(colourReset);
     //
-    move();
-    bounceBall();
+    ballScore();
     bounceOffPaddle();
   }//End draw
   //
@@ -64,5 +63,22 @@ class Ball
   private void ballScore() {
     //Intro to empty IF
     //Ball knows where NET is 
+    if ( xBall < (width*0) + diameter || xBall > width - diameter ) { //Net detection
+      xBallGoal = true;
+      if ( xBall < (width*0) + diameter ) {
+        xBall = (width*0) + (diameter/4);
+        yBall = yBall;
+      }//Goal for left player
+      if ( xBall > width - diameter ) {
+        xBall = (width) - (diameter/4);
+        yBall = yBall;
+      }//Goal for right player
+    }//End Net detection 
+    //
+    if (xBallGoal == true) {
+    } else {
+      move();
+      bounceBall();
+    }
   }//End ballScore
 }//End Ball

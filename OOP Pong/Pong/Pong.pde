@@ -12,11 +12,12 @@ void setup()
   //
   //constructor 
   ball[ballCounter] = new Ball(width, height); //Start he first ball, need ballCounter
+  paddles = new Paddle(width, height);
   //Instead of using myBall and yourBall, ball[0]
   //
   ballCounter++;//ballCounter += 1;
   //
-  paddles = new Paddle(width*1/40, height*1/3, (width*39/40) - (width*1/100), height*1/3, width*1/50, height*1/5);
+  //Paddle();
   //exit(); //Exit button TBA
 }//End Setup()
 //object is garbege collected here because it's a local variable
@@ -24,11 +25,11 @@ void setup()
 void draw() 
 { 
   background(#030303);
+  paddles.draw();
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)
     ball[i].draw();
   }//End ball.draw
   ballCollisions();
-  paddles.draw();
 }//End draw()
 //
 void keyPressed() 

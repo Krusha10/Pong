@@ -4,31 +4,40 @@
 */
 class Paddle 
 { 
-  float xLeftPaddle, yLeftPaddle, xRightPaddle, yRightPaddle, widthPaddle, heightPaddle;
+  private color colour, whiteColorReset = #000000;
+  private int xLeftPaddle, yLeftPaddle, xRightPaddle, yRightPaddle, widthPaddle, heightPaddle;
+  private Boolean nightMode = false;
   //
-  Paddle(float xLParameter, float yLParameter, float xRParameter, float yRParameter, float wPParameter, float hPParameter)
-  {
+  Paddle(float widthParameter, float heightParameter) {
+    if (nightMode == false) this.colour = color(int(random(0,255)), int(random(0,255)), int(random(0,255)));
+    if (nightMode == true) this.colour = color(int(random(0,255)), int(random(0,255)), 0);
     //Game starts, paddles in the middle
-    xLeftPaddle = xLParameter;
-    yLeftPaddle = yLParameter;
-    xRightPaddle = xRParameter;
-    yRightPaddle = yRParameter;
-    widthPaddle = wPParameter;
-    heightPaddle = hPParameter;
+    widthPaddle = int(heightParameter*2/80);
+    heightPaddle = int(heightParameter*1/4);
+    xLeftPaddle = int(heightParameter*1/40);
+    this.yLeftPaddle = int(heightParameter*1/2) - heightPaddle*1/2;
+    xRightPaddle = int(widthParameter*39/40) - widthPaddle;
+    this.yRightPaddle = yLeftPaddle;
+    //Variables to move the paddles
+    //Variables for paddle speed
   }//End Constructor 
   //
   void draw() {
-    fill(#FF9558);
-    rect(xLeftPaddle, yLeftPaddle, widthPaddle, heightPaddle);
-    fill(#FF58E3);
-    rect(xRightPaddle, yRightPaddle, widthPaddle, heightPaddle);
+    leftPaddle();
+    rightPaddle(); 
   }
   //
   void leftPaddle() {
+    fill(colour);
+    rect(xLeftPaddle, yLeftPaddle, widthPaddle, heightPaddle);
+    fill(whiteColorReset);
     paddleMove();
   }//End leftPaddle
   //
   void rightPaddle() {
+    fill(colour);
+    rect(xRightPaddle, yRightPaddle, widthPaddle, heightPaddle);
+    fill(whiteColorReset);
     paddleMove();
   }//End rightPaddle
   //
