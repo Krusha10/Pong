@@ -6,8 +6,8 @@ Paddle paddles;
 //
 void setup() 
 {
-  size(700, 500);
-  //fullScreen();
+  //size(700, 500);
+  fullScreen();
   //Screen size checker 
   //
   //constructor 
@@ -38,6 +38,12 @@ void keyPressed()
   //NightMode might be better as a Static variable
   //Press W-S-D for left paddle
   //Press UP-DOWN-LEFT arroes for right paddle
+  if (key == CODED && key == 'W' || key == 'w') paddles.getterLeftUp();
+  if (key == CODED && key == 'S' || key == 's') paddles.getterLeftDown();
+  if (key == CODED && key == 'D' || key == 'd') paddles.getterLeftStop();
+  if (key == CODED && keyCode == UP) paddles.getterRightUp();
+  if (key == CODED && keyCode == DOWN) paddles.getterRightDown();
+  if (key == CODED && keyCode == LEFT) paddles.getterRightStop();
 }//End keypressed()
 //
 void mousePressed() 

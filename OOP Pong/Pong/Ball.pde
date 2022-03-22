@@ -36,7 +36,7 @@ class Ball
     }
   }//End Constructor
   //
-  private void draw() {
+  public void draw() {
     fill(colour);
     ellipse(xBall, yBall, diameter, diameter);
     fill(colourReset);
@@ -81,4 +81,7 @@ class Ball
       bounceBall();
     }
   }//End ballScore
+  void nightModeKeys() {
+    if (key == CODED && key == 'N' || key == 'n') nightMode = true;
+  }
 }//End Ball
