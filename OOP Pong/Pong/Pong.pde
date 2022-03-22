@@ -46,7 +46,7 @@ void keyPressed()
   if (key == CODED && keyCode == LEFT) paddles.getterRightStop();
 }//End keypressed()
 //
-void mousePressed() 
+void mousePressed()   
 {
   //Easter Egg Example: mouse press to create another ball instantiation 
   if ( ballCounter >= ball.length ) {
