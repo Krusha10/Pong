@@ -81,7 +81,9 @@ class Ball
       bounceBall();
     }
   }//End ballScore
+  /*
   void nightModeKeys() {
     if (key == CODED && key == 'N' || key == 'n') nightMode = true;
   }
+  */
 }//End Ball
