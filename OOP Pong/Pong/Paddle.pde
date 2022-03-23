@@ -54,8 +54,8 @@ class Paddle
   }//End rightPaddle
   //
   void paddleMove() {
-    yLeftPaddle++;
-    yRightPaddle++;
+    //yLeftPaddle++;
+    //yRightPaddle++;
     if (leftUp == true && leftDown == false) {
       yLeftPaddle -= yMove;
       leftStop = false;
@@ -69,11 +69,11 @@ class Paddle
       leftDown = false;
     }
     if (rightUp == true && rightDown == false) {
-      yLeftPaddle -= yMove;
+      yRightPaddle -= yMove;
       rightStop = false;
     }
     if (rightDown == true && rightUp == false) {
-      yLeftPaddle += yMove;
+      yRightPaddle += yMove;
       rightStop = false;
     }
     if (rightStop == true) {
@@ -108,21 +108,27 @@ class Paddle
   }
   //Send paddle location to ball class for collision and bounce
   public void setterLeftUp() {
+    paddleMoveReset();
     leftUp = true;
   }
   public void setterLeftDown() {
+    paddleMoveReset();
     leftDown = true;
   }
   public void setterLeftStop() {
+    paddleMoveReset();
     leftStop = true;
   }
   public void setterRightUp() {
+    paddleMoveReset();
     rightUp = true;
   }
   public void setterRightDown() {
+    paddleMoveReset();
     rightDown = true;
   }
   public void setterRightStop() {
+    paddleMoveReset();
     rightStop = true;
   }
   //
