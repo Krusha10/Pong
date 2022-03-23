@@ -5,10 +5,11 @@
 class Paddle 
 { 
   private color colour, whiteColorReset = #000000;
-  private int xLeftPaddle, yLeftPaddle, xRightPaddle, yRightPaddle, widthPaddle, heightPaddle, yMove;
-  private Boolean nightMode = false, leftUp = false, rightUp = false, leftDown = false, rightDown = false, leftStop = false, rightStop = false;
+  private int xLeftPaddle, yLeftPaddle, xRightPaddle, yRightPaddle, widthPaddle, heightPaddle, paddleSpeed, yMove;
+  private Boolean nightMode = false;
+  private Boolean leftUp = false, rightUp = false, leftDown = false, rightDown = false, leftStop = false, rightStop = false;
   //
-  public Paddle(float widthParameter, float heightParameter) {
+  Paddle(float widthParameter, float heightParameter) {
     if (nightMode == false) this.colour = color(int(random(0, 255)), int(random(0, 255)), int(random(0, 255)));
     if (nightMode == true) this.colour = color(int(random(0, 255)), int(random(0, 255)), 0);
     //Game starts, paddles in the middle
@@ -18,20 +19,22 @@ class Paddle
     this.yLeftPaddle = int(heightParameter*1/2) - heightPaddle*1/2;
     xRightPaddle = int(widthParameter*39/40) - widthPaddle;
     this.yRightPaddle = yLeftPaddle;
-    this.leftUp = false;
+    //Variables to move paddles
+    this.leftUp = false; 
     this.rightUp = false;
     this.leftDown = false;
     this.rightDown = false;
     this.leftStop = false;
     this.rightStop = false;
-    int paddleSpeed = 3;
+    //Speed Variables
+    paddleSpeed = 3;
     this.yMove = int((heightParameter / heightParameter) * paddleSpeed);
     //Variables to move the paddles
     //Variables for paddle speed
   }//End Constructor 
   //
   void draw() {
-    playTheGame();
+    //playTheGame();
     leftPaddle();
     rightPaddle();
   }
@@ -50,9 +53,10 @@ class Paddle
     paddleMove();
   }//End rightPaddle
   //
-  //Paddle movements as Boolean 
-  void playTheGame() {
-    if ( leftUp == true && leftDown == false ) {
+  void paddleMove() {
+    yLeftPaddle++;
+    yRightPaddle++;
+    if (leftUp == true && leftDown == false) {
       yLeftPaddle -= yMove;
       leftStop = false;
     }
@@ -64,55 +68,23 @@ class Paddle
       leftUp = false;
       leftDown = false;
     }
-    if ( rightUp == true && rightDown == false ) {
-      yRightPaddle -= yMove;
+    if (rightUp == true && rightDown == false) {
+      yLeftPaddle -= yMove;
       rightStop = false;
     }
     if (rightDown == true && rightUp == false) {
-      yRightPaddle += yMove;
+      yLeftPaddle += yMove;
       rightStop = false;
     }
     if (rightStop == true) {
       rightUp = false;
       rightDown = false;
     }
-  }
-  void paddleMovements() {
-    leftUp = false;
-    rightUp = false;
-    leftDown = false;
-    rightDown = false;
-    leftStop = false;
-    rightStop = false;
-  }
-  //KeyBoard Input
-  void getterLeftUp() {
-    paddleMovements();
-    leftUp = true;
-  }
-  void getterRightUp() {
-    paddleMovements();
-    rightUp = true;
-  }
-  void getterLeftDown() {
-    paddleMovements();
-    leftDown = true;
-  }
-  void getterRightDown() {
-    paddleMovements();
-    rightDown = true;
-  }
-  void getterLeftStop() {
-    paddleMovements();
-    leftStop = true;
-  }
-  void getterRightStop() {
-    paddleMovements();
-    rightStop = true;
-  }
-  //
-  void paddleMove() {
     //Paddles needs to stop at the top and bottom, otherwise it will go off the screen
+    if (yLeftPaddle <= height*0) yLeftPaddle = 0;
+    if (yLeftPaddle >= height - heightPaddle) yLeftPaddle = height - heightPaddle;
+    if (yRightPaddle <= height*0) yRightPaddle = 0;
+    if (yRightPaddle >= height - heightPaddle) yRightPaddle = height - heightPaddle;
   }//End paddleMove
   //
   //IDEAS:
@@ -126,6 +98,32 @@ class Paddle
   //When the ball bounces off the addle, randomize the color 20 times (1/3 of a second)
   //
   //setters
+  void paddleMoveReset() {
+    leftUp = false; 
+    rightUp = false;
+    leftDown = false;
+    rightDown = false;
+    leftStop = false;
+    rightStop = false;
+  }
   //Send paddle location to ball class for collision and bounce
+  public void setterLeftUp() {
+    leftUp = true;
+  }
+  public void setterLeftDown() {
+    leftDown = true;
+  }
+  public void setterLeftStop() {
+    leftStop = true;
+  }
+  public void setterRightUp() {
+    rightUp = true;
+  }
+  public void setterRightDown() {
+    rightDown = true;
+  }
+  public void setterRightStop() {
+    rightStop = true;
+  }
   //
 }//End Paddle
