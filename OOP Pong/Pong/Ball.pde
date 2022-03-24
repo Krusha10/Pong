@@ -78,7 +78,7 @@ class Ball
   }//End ballScore
   //Getters and setters
   void xDirectionSetter(int xPaddleRight, int yPaddleRight, int xPaddleLeft, int yPaddleLeft, int paddleHeight, int paddleWidth) {
-    if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xDirection = xDirection * (-1);
+    if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xDirection *= (-1);
     if (xBall <= width*1/4) if (yBall >= xPaddleLeft && yBall <= yPaddleLeft+ paddleHeight) if (xBall <= xPaddleLeft + paddleWidth + diameter) xDirection = xDirection * (-1);
   }
   /*
