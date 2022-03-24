@@ -42,7 +42,7 @@ class Ball
     fill(colourReset);
     //
     ballScore();
-    bounceOffPaddle();
+    //bounceOffPaddle();
   }//End draw
   //
   private void move() {
@@ -54,11 +54,6 @@ class Ball
     if (xBall - diameter*1/2 < width*0 || xBall + diameter*1/2 > width) xSpeed *= -1;
     if (yBall - diameter*1/2 < height*0 || yBall + diameter*1/2 > height) ySpeed *= -1;
   }//End Bounce
-  //
-  private void bounceOffPaddle() {
-    //if ( xBall < xLeftPaddle + widthPaddle +(diameter*1/2) && yBall > yLeftPaddle && yBall < yLeftPaddle+ heightPaddle ) xSpeed *=-1;
-    //if ( xBall >= xRightPaddle && yBall > y1RightPaddle && yBall < yRightPaddle + heightPaddle ) xSpeed *=-1;
-  }//End bounceOffPaddle
   //
   private void ballScore() {
     //Intro to empty IF
@@ -81,9 +76,14 @@ class Ball
       bounceBall();
     }
   }//End ballScore
+  //Getters and setters
+  void xDirectionSetter(int xPaddleRight, int yPaddleRight, int xPaddleLeft, int yPaddleLeft, int paddleHeight, int paddleWidth) {
+    if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xDirection = xDirection * (-1);
+    if (xBall <= width*1/4) if (yBall >= xPaddleLeft && yBall <= yPaddleLeft+ paddleHeight) if (xBall <= xPaddleLeft + paddleWidth + diameter) xDirection = xDirection * (-1);
+  }
   /*
   void nightModeKeys() {
-    if (key == CODED && key == 'N' || key == 'n') nightMode = true;
-  }
-  */
+   if (key == CODED && key == 'N' || key == 'n') nightMode = true;
+   }
+   */
 }//End Ball

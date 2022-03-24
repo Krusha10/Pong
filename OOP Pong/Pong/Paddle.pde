@@ -14,7 +14,7 @@ class Paddle
     if (nightMode == true) this.colour = color(int(random(0, 255)), int(random(0, 255)), 0);
     //Game starts, paddles in the middle
     widthPaddle = int(heightParameter*2/80);
-    heightPaddle = int(heightParameter*1/4);
+    heightPaddle = int(heightParameter*1/2);
     xLeftPaddle = int(heightParameter*1/40);
     this.yLeftPaddle = int(heightParameter*1/2) - heightPaddle*1/2;
     xRightPaddle = int(widthParameter*39/40) - widthPaddle;
@@ -95,7 +95,25 @@ class Paddle
   //- ability is controlled in configuration(On or Off)
   //
   //Getter
-  //When the ball bounces off the addle, randomize the color 20 times (1/3 of a second)
+  //When the ball bounces off the Paddle, randomize the color 20 times (1/3 of a second)
+  int yRightPaddleGetter() {
+    return yRightPaddle;
+  }
+  int heightPaddleGetter() {
+    return heightPaddle;
+  }
+  int xRightPaddleGetter() {
+    return xRightPaddle;
+  }
+  int yLeftPaddleGetter() {
+    return yLeftPaddle;
+  }
+  int xLeftPaddleGetter() {
+    return xLeftPaddle;
+  }
+  int widthPaddleGetter() {
+    return widthPaddle;
+  }
   //
   //setters
   void paddleMoveReset() {

@@ -28,6 +28,7 @@ void draw()
   paddles.draw();
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)
     ball[i].draw();
+    ball[i].xDirectionSetter(paddles. xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
   }//End ball.draw
   ballCollisions();
 }//End draw()
