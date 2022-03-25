@@ -3,6 +3,8 @@ int ballCount = 10; // Hack for static variable, see Ball class
 Ball[] ball = new Ball[ballCount];//Not just array, but an array list, includes code and variables
 int ballCounter = ball.length - ball.length;//Way to get 0 using another value
 Paddle paddles;
+private Boolean[] leftScoreOn = new Boolean[ball.length];
+private Boolean[] rightScoreOn = new Boolean[ball.length];
 //
 void setup() 
 {
@@ -17,6 +19,10 @@ void setup()
   //
   ballCounter++;//ballCounter += 1;
   //
+  for (int i=0; i<ball.length; i++) {
+    leftScoreOn[i] = false;
+    rightScoreOn[i] = false;
+  }
   //Paddle();
   //exit(); //Exit button TBA
 }//End Setup()
@@ -25,12 +31,14 @@ void setup()
 void draw() 
 { 
   background(#030303);
-  paddles.draw();
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)
     ball[i].draw();
-    ball[i].xDirectionSetter(paddles. xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
+    ball[i].xDirectionSetter(paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
+    //
+    if (ball[i])
   }//End ball.draw
-  ballCollisions();
+  //ballCollisions();
+  paddles.draw();
 }//End draw()
 //
 void keyPressed() 

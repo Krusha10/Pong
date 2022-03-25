@@ -5,10 +5,10 @@
 class Ball 
 {
   //Global variables
-  private float xBall, yBall, diameter, xStart, yStart, xDirection, yDirection; 
+  private float xBall, yBall, diameter, xMove, yMove, xStart, yStart, xDirection, yDirection; 
   private color colour, colourReset = #FFFFFF; 
   private int xSpeed, ySpeed;
-  private Boolean nightMode = false, xBallGoal = false;
+  private Boolean nightMode = false, xLeftBallGoal = false, xRightBallGoal = false;
   //
   //int ballCount = 10; //knows how many instances of Ball there are
   //Not just myBall and yourBall
@@ -28,11 +28,11 @@ class Ball
     this.ySpeed = int (random (1, 6));
     xDirection = 0;
     while (xDirection == 0) {
-      this.xDirection = int (random(-3, 3));
+      xDirection = int(random(-2, 2));
     }
     yDirection = 0;
     while (yDirection == 0) {
-      this.yDirection = int (random(-3, 3));
+      yDirection = int(random(-2, 2));
     }
   }//End Constructor
   //
@@ -59,27 +59,38 @@ class Ball
     //Intro to empty IF
     //Ball knows where NET is 
     if ( xBall < (width*0) + diameter || xBall > width - diameter ) { //Net detection
-      xBallGoal = true;
+      xLeftBallGoal = true;
       if ( xBall < (width*0) + diameter ) {
         xBall = (width*0) + (diameter/4);
         yBall = yBall;
       }//Goal for left player
       if ( xBall > width - diameter ) {
+        xRightBallGoal = true;
         xBall = (width) - (diameter/4);
         yBall = yBall;
       }//Goal for right player
     }//End Net detection 
     //
-    if (xBallGoal == true) {
+    if (xLeftBallGoal == true || xRightBallGoal == true) {
     } else {
+      xMove = xSpeed*xDirection;
+      yMove = ySpeed*yDirection;
+      xBall += xMove;
+      yBall += yMove;
       move();
       bounceBall();
     }
   }//End ballScore
   //Getters and setters
-  void xDirectionSetter(int xPaddleRight, int yPaddleRight, int xPaddleLeft, int yPaddleLeft, int paddleHeight, int paddleWidth) {
-    if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xDirection *= (-1);
+  Boolean leftBallGoalGetter() {
+    return xLeftBallGoal;
+  }
+  Boolean rightBallGoalGetter() {
+    return xRightBallGoal;
+  }
+  void xDirectionSetter( int xPaddleLeft, int yPaddleLeft, int xPaddleRight, int yPaddleRight, int paddleHeight, int paddleWidth) {
     if (xBall <= width*1/4) if (yBall >= xPaddleLeft && yBall <= yPaddleLeft+ paddleHeight) if (xBall <= xPaddleLeft + paddleWidth + diameter) xDirection = xDirection * (-1);
+    if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xDirection = xDirection * (-1);
   }
   /*
   void nightModeKeys() {

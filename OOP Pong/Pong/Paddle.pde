@@ -13,8 +13,8 @@ class Paddle
     if (nightMode == false) this.colour = color(int(random(0, 255)), int(random(0, 255)), int(random(0, 255)));
     if (nightMode == true) this.colour = color(int(random(0, 255)), int(random(0, 255)), 0);
     //Game starts, paddles in the middle
-    widthPaddle = int(heightParameter*2/80);
-    heightPaddle = int(heightParameter*1/2);
+    widthPaddle = int(heightParameter*3/80);
+    heightPaddle = int(heightParameter*1/5);
     xLeftPaddle = int(heightParameter*1/40);
     this.yLeftPaddle = int(heightParameter*1/2) - heightPaddle*1/2;
     xRightPaddle = int(widthParameter*39/40) - widthPaddle;
@@ -96,20 +96,20 @@ class Paddle
   //
   //Getter
   //When the ball bounces off the Paddle, randomize the color 20 times (1/3 of a second)
+  int xRightPaddleGetter() {
+    return xRightPaddle;
+  }
   int yRightPaddleGetter() {
     return yRightPaddle;
   }
-  int heightPaddleGetter() {
-    return heightPaddle;
-  }
-  int xRightPaddleGetter() {
-    return xRightPaddle;
+  int xLeftPaddleGetter() {
+    return xLeftPaddle;
   }
   int yLeftPaddleGetter() {
     return yLeftPaddle;
   }
-  int xLeftPaddleGetter() {
-    return xLeftPaddle;
+  int heightPaddleGetter() {
+    return heightPaddle;
   }
   int widthPaddleGetter() {
     return widthPaddle;
