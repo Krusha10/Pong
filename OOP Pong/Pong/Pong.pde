@@ -3,8 +3,9 @@ int ballCount = 10; // Hack for static variable, see Ball class
 Ball[] ball = new Ball[ballCount];//Not just array, but an array list, includes code and variables
 int ballCounter = ball.length - ball.length;//Way to get 0 using another value
 Paddle paddles;
-private Boolean[] leftScoreOn = new Boolean[ball.length];
-private Boolean[] rightScoreOn = new Boolean[ball.length];
+ScoreBoard score;
+private Boolean[] leftScoreOff = new Boolean[ball.length];
+private Boolean[] rightScoreOff = new Boolean[ball.length];
 //
 void setup() 
 {
@@ -15,13 +16,14 @@ void setup()
   //constructor 
   ball[ballCounter] = new Ball(width, height); //Start he first ball, need ballCounter
   paddles = new Paddle(width, height);
+  score = new ScoreBoard(0,0);
   //Instead of using myBall and yourBall, ball[0]
   //
   ballCounter++;//ballCounter += 1;
   //
   for (int i=0; i<ball.length; i++) {
-    leftScoreOn[i] = false;
-    rightScoreOn[i] = false;
+    leftScoreOff[i] = false;
+    rightScoreOff[i] = false;
   }
   //Paddle();
   //exit(); //Exit button TBA
@@ -35,7 +37,14 @@ void draw()
     ball[i].draw();
     ball[i].xDirectionSetter(paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
     //
-    if (ball[i])
+    if (ball[i].leftBallGoalGetter() == true && leftScoreOff[i] == false) {
+      score.leftScoreSetter();
+      leftScoreOff[i] = true;
+    }
+    if (ball[i].rightBallGoalGetter() == true && rightScoreOff[i] == false) {
+      score.rightScoreSetter();
+      rightScoreOff[i] = true;
+    }
   }//End ball.draw
   //ballCollisions();
   paddles.draw();

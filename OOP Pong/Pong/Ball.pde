@@ -5,7 +5,7 @@
 class Ball 
 {
   //Global variables
-  private float xBall, yBall, diameter, xMove, yMove, xStart, yStart, xDirection, yDirection; 
+  private int xBall, yBall, diameter, xMove, yMove, xStart, yStart, xDirection, yDirection; 
   private color colour, colourReset = #FFFFFF; 
   private int xSpeed, ySpeed;
   private Boolean nightMode = false, xLeftBallGoal = false, xRightBallGoal = false;
@@ -17,8 +17,8 @@ class Ball
   //width*3/4, height*1/2, width*1/35, color(random(0, 255), random(255), random(255)), width/width, height/height
   //width*1/2, height*1/2, width*1/35, color(random(0, 255), random(255), random(255)), width/width, height/height
   private Ball (float widthParameter, float hightParameter) {
-    this.xBall = widthParameter*1/2;
-    this.yBall = hightParameter*1/2;
+    this.xBall = int(widthParameter*1/2);
+    this.yBall = int(hightParameter*1/2);
     xStart = xBall;//location when game starts 
     yStart = yBall;
     diameter =  width*1/35;
@@ -59,8 +59,8 @@ class Ball
     //Intro to empty IF
     //Ball knows where NET is 
     if ( xBall < (width*0) + diameter || xBall > width - diameter ) { //Net detection
-      xLeftBallGoal = true;
       if ( xBall < (width*0) + diameter ) {
+        xLeftBallGoal = true;
         xBall = (width*0) + (diameter/4);
         yBall = yBall;
       }//Goal for left player
@@ -77,11 +77,17 @@ class Ball
       yMove = ySpeed*yDirection;
       xBall += xMove;
       yBall += yMove;
-      move();
+      //move();
       bounceBall();
     }
   }//End ballScore
   //Getters and setters
+  int xBallGetter() {
+    return xStart;
+  }//End ballXGetter
+  int yBallGetter() {
+    return yStart;
+  }//End ballYGetter
   Boolean leftBallGoalGetter() {
     return xLeftBallGoal;
   }
