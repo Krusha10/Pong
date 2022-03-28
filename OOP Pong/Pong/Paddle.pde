@@ -27,7 +27,8 @@ class Paddle
     this.leftStop = false;
     this.rightStop = false;
     //Speed Variables
-    paddleSpeed = 3;
+    //paddleSpeed = 3;
+    paddleSpeedKeys();
     this.yMove = int((heightParameter / heightParameter) * paddleSpeed);
     //Variables to move the paddles
     //Variables for paddle speed
@@ -96,24 +97,6 @@ class Paddle
   //
   //Getter
   //When the ball bounces off the Paddle, randomize the color 20 times (1/3 of a second)
-  int xRightPaddleGetter() {
-    return xRightPaddle;
-  }
-  int yRightPaddleGetter() {
-    return yRightPaddle;
-  }
-  int xLeftPaddleGetter() {
-    return xLeftPaddle;
-  }
-  int yLeftPaddleGetter() {
-    return yLeftPaddle;
-  }
-  int heightPaddleGetter() {
-    return heightPaddle;
-  }
-  int widthPaddleGetter() {
-    return widthPaddle;
-  }
   //
   //setters
   void paddleMoveReset() {
@@ -150,4 +133,27 @@ class Paddle
     rightStop = true;
   }
   //
+  int xRightPaddleGetter() {
+    return xRightPaddle;
+  }
+  int yRightPaddleGetter() {
+    return yRightPaddle;
+  }
+  int xLeftPaddleGetter() {
+    return xLeftPaddle;
+  }
+  int yLeftPaddleGetter() {
+    return yLeftPaddle;
+  }
+  int heightPaddleGetter() {
+    return heightPaddle;
+  }
+  int widthPaddleGetter() {
+    return widthPaddle;
+  }
+  void paddleSpeedKeys() {
+   if (key == CODED && key == 'A' || key == 'a') paddleSpeed = 1;
+   if (key == CODED && key == 'B' || key == 'b') paddleSpeed = 3;
+   if (key == CODED && key == 'C' || key == 'c') paddleSpeed = 5;
+   }
 }//End Paddle

@@ -1,9 +1,10 @@
 // Global variables 
-int ballCount = 10; // Hack for static variable, see Ball class
+final int ballCount = 10; // Hack for static variable, see Ball class
 Ball[] ball = new Ball[ballCount];//Not just array, but an array list, includes code and variables
 int ballCounter = ball.length - ball.length;//Way to get 0 using another value
 Paddle paddles;
 ScoreBoard score;
+Boolean geometryCheck = false; 
 private Boolean[] leftScoreOff = new Boolean[ball.length];
 private Boolean[] rightScoreOff = new Boolean[ball.length];
 //
@@ -13,10 +14,11 @@ void setup()
   //fullScreen();
   //Screen size checker 
   //
-  //constructor 
+  //constructor
+  score = new ScoreBoard(0,0); 
+  //
   ball[ballCounter] = new Ball(width, height); //Start he first ball, need ballCounter
   paddles = new Paddle(width, height);
-  score = new ScoreBoard(0,0);
   //Instead of using myBall and yourBall, ball[0]
   //
   ballCounter++;//ballCounter += 1;
@@ -33,6 +35,8 @@ void setup()
 void draw() 
 { 
   background(#030303);
+  score.instructions();
+  //if (geometryCheck == false) screenCheck.mediaQuiry(); 
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)
     ball[i].draw();
     ball[i].xDirectionSetter(paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
@@ -62,6 +66,11 @@ void keyPressed()
   if (key == CODED && keyCode == UP) paddles.setterRightUp();
   if (key == CODED && keyCode == DOWN) paddles.setterRightDown();
   if (key == CODED && keyCode == LEFT) paddles.setterRightStop();
+  /*
+  if (key == CODED && key == 'A' || key == 'a') paddles.setterLeftUp();
+  if (key == CODED && key == 'B' || key == 'b') paddles.setterLeftDown();
+  if (key == CODED && key == 'C' || key == 'c') paddles.setterLeftStop();
+  */
 }//End keypressed()
 //
 void mousePressed()   

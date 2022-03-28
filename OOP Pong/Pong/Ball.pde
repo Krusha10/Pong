@@ -5,7 +5,7 @@
 class Ball 
 {
   //Global variables
-  private int xBall, yBall, diameter, xMove, yMove, xStart, yStart, xDirection, yDirection; 
+  private int xBall, yBall, diameter, xMove, yMove, xStart, yStart, xDirection = 0, yDirection = 0; 
   private color colour, colourReset = #FFFFFF; 
   private int xSpeed, ySpeed;
   private Boolean nightMode = false, xLeftBallGoal = false, xRightBallGoal = false;
@@ -21,16 +21,18 @@ class Ball
     this.yBall = int(hightParameter*1/2);
     xStart = xBall;//location when game starts 
     yStart = yBall;
+    this.xLeftBallGoal = false;
+    this.xRightBallGoal = false;
     diameter =  width*1/35;
-    if (nightMode == false)colour = color(random(0, 255), random(255), random(255));//Hexadecimal: #1EC805
+    if (nightMode == false) colour = color(random(0, 255), random(255), random(255));//Hexadecimal: #1EC805
     if (nightMode == true) colour = color(random(0, 255), random(255), 0);
     this.xSpeed = int (random (1, 6));
     this.ySpeed = int (random (1, 6));
-    xDirection = 0;
+    //xDirection = 0;
     while (xDirection == 0) {
       xDirection = int(random(-2, 2));
     }
-    yDirection = 0;
+    //yDirection = 0;
     while (yDirection == 0) {
       yDirection = int(random(-2, 2));
     }
@@ -42,6 +44,8 @@ class Ball
     fill(colourReset);
     //
     ballScore();
+    //move();
+    //bounceBall();
     //bounceOffPaddle();
   }//End draw
   //
@@ -73,11 +77,11 @@ class Ball
     //
     if (xLeftBallGoal == true || xRightBallGoal == true) {
     } else {
-      xMove = xSpeed*xDirection;
-      yMove = ySpeed*yDirection;
-      xBall += xMove;
-      yBall += yMove;
-      //move();
+      //xMove = xSpeed*xDirection;
+      //yMove = ySpeed*yDirection;
+      //xBall += xMove;
+      //yBall += yMove;
+      move();
       bounceBall();
     }
   }//End ballScore
@@ -95,12 +99,14 @@ class Ball
     return xRightBallGoal;
   }
   void xDirectionSetter( int xPaddleLeft, int yPaddleLeft, int xPaddleRight, int yPaddleRight, int paddleHeight, int paddleWidth) {
+    //println( xPaddleLeft, yPaddleLeft, xPaddleRight, yPaddleRight, paddleHeight, paddleWidth);
     if (xBall <= width*1/4) if (yBall >= xPaddleLeft && yBall <= yPaddleLeft+ paddleHeight) if (xBall <= xPaddleLeft + paddleWidth + diameter) xDirection = xDirection * (-1);
+    //if ( xBall >= xPaddleRight && yBall > yPaddleRight && yBall < yPaddleRight+paddleHeight ) xMove *=-1;
     if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xDirection = xDirection * (-1);
   }
-  /*
+  
   void nightModeKeys() {
    if (key == CODED && key == 'N' || key == 'n') nightMode = true;
    }
-   */
+   
 }//End Ball
