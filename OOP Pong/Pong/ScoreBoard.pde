@@ -1,6 +1,6 @@
 /* Ideas
  */
-
+/*
 class ScoreBoard {
   //Global Variables 
   private int leftScore, rightScore, xRightScore, yRightScore, widthScore, heightScore, xLeftScore, yLeftScore;
@@ -140,3 +140,4 @@ class ScoreBoard {
     text(playAgain, width/2, 300);
   }
 }//End ScoreBoard
+*/

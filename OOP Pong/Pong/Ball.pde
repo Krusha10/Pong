@@ -29,13 +29,9 @@ class Ball
     this.xSpeed = int (random (1, 6));
     this.ySpeed = int (random (1, 6));
     //xDirection = 0;
-    while (xDirection == 0) {
-      xDirection = int(random(-2, 2));
-    }
+    while (xDirection == 0) xDirection = int(random(-2, 2));
     //yDirection = 0;
-    while (yDirection == 0) {
-      yDirection = int(random(-2, 2));
-    }
+    while (yDirection == 0) yDirection = int(random(-2, 2));
   }//End Constructor
   //
   public void draw() {
@@ -63,19 +59,21 @@ class Ball
     //Intro to empty IF
     //Ball knows where NET is 
     if ( xBall < (width*0) + diameter || xBall > width - diameter ) { //Net detection
-      if ( xBall < (width*0) + diameter ) {
+      if ( xBall < (width*0) + diameter) {
         xLeftBallGoal = true;
-        xBall = (width*0) + (diameter/4);
-        yBall = yBall;
+        xBall = width*1/2;
+        yBall = height*1/2;
       }//Goal for left player
-      if ( xBall > width - diameter ) {
+      if ( xBall > width - diameter) {
         xRightBallGoal = true;
-        xBall = (width) - (diameter/4);
-        yBall = yBall;
+        xBall = width*1/2;
+        yBall = height*1/2;
       }//Goal for right player
     }//End Net detection 
     //
     if (xLeftBallGoal == true || xRightBallGoal == true) {
+      move();
+      bounceBall();
     } else {
       //xMove = xSpeed*xDirection;
       //yMove = ySpeed*yDirection;
@@ -100,13 +98,34 @@ class Ball
   }
   void xDirectionSetter( int xPaddleLeft, int yPaddleLeft, int xPaddleRight, int yPaddleRight, int paddleHeight, int paddleWidth) {
     //println( xPaddleLeft, yPaddleLeft, xPaddleRight, yPaddleRight, paddleHeight, paddleWidth);
-    if (xBall <= width*1/4) if (yBall >= xPaddleLeft && yBall <= yPaddleLeft+ paddleHeight) if (xBall <= xPaddleLeft + paddleWidth + diameter) xDirection = xDirection * (-1);
+    if (xBall <= width*1/4) if (yBall >= xPaddleLeft && yBall <= yPaddleLeft+ paddleHeight) if (xBall <= xPaddleLeft + paddleWidth + diameter) xSpeed *= (-1);
     //if ( xBall >= xPaddleRight && yBall > yPaddleRight && yBall < yPaddleRight+paddleHeight ) xMove *=-1;
-    if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xDirection = xDirection * (-1);
+    if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xSpeed *= (-1);
   }
-  
+  //
+  void scoreSetter(int scoreLeft, int scoreRight) {
+    if (scoreLeft == 5 || scoreRight == 5) {
+      if (scoreRight == 5) {
+        textAlign(CENTER);
+        textSize(60);
+        fill(#FF9558);
+        text("WINNER", width/2, 150);
+        fill(#FF9558);
+        text("LEFT PLAYER WINS!", width/2, 250);
+      }
+      if (scoreLeft == 5) {
+        textAlign(CENTER);
+        textSize(60);
+        fill(#FF9558);
+        text("WINNER", width/2, 150);
+        fill(#FF9558);
+        text("RIGHT PLAYER WINS!", width/2, 250);
+      }
+    }
+  }
+  /*
   void nightModeKeys() {
    if (key == CODED && key == 'N' || key == 'n') nightMode = true;
    }
-   
+   */
 }//End Ball

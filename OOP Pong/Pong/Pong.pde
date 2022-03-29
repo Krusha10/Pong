@@ -3,7 +3,7 @@ final int ballCount = 10; // Hack for static variable, see Ball class
 Ball[] ball = new Ball[ballCount];//Not just array, but an array list, includes code and variables
 int ballCounter = ball.length - ball.length;//Way to get 0 using another value
 Paddle paddles;
-ScoreBoard score;
+//ScoreBoard score;
 Boolean geometryCheck = false; 
 private Boolean[] leftScoreOff = new Boolean[ball.length];
 private Boolean[] rightScoreOff = new Boolean[ball.length];
@@ -15,10 +15,12 @@ void setup()
   //Screen size checker 
   //
   //constructor
-  score = new ScoreBoard(0,0); 
   //
   ball[ballCounter] = new Ball(width, height); //Start he first ball, need ballCounter
   paddles = new Paddle(width, height);
+  if (geometryCheck == false) paddles.mediaQuiry();
+  paddles.textSetup();
+  //score = new ScoreBoard(0,0); 
   //Instead of using myBall and yourBall, ball[0]
   //
   ballCounter++;//ballCounter += 1;
@@ -35,18 +37,19 @@ void setup()
 void draw() 
 { 
   background(#030303);
-  score.instructions();
+  //score.instructions();
   //if (geometryCheck == false) screenCheck.mediaQuiry(); 
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)
     ball[i].draw();
-    ball[i].xDirectionSetter(paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
+    ball[i].xDirectionSetter(paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
+    ball[i].scoreSetter (paddles.leftScoreGetter(), paddles.rightScoreGetter());
     //
     if (ball[i].leftBallGoalGetter() == true && leftScoreOff[i] == false) {
-      score.leftScoreSetter();
+      paddles.leftScoreSetter();
       leftScoreOff[i] = true;
     }
     if (ball[i].rightBallGoalGetter() == true && rightScoreOff[i] == false) {
-      score.rightScoreSetter();
+      paddles.rightScoreSetter();
       rightScoreOff[i] = true;
     }
   }//End ball.draw
@@ -66,11 +69,9 @@ void keyPressed()
   if (key == CODED && keyCode == UP) paddles.setterRightUp();
   if (key == CODED && keyCode == DOWN) paddles.setterRightDown();
   if (key == CODED && keyCode == LEFT) paddles.setterRightStop();
-  /*
-  if (key == CODED && key == 'A' || key == 'a') paddles.setterLeftUp();
-  if (key == CODED && key == 'B' || key == 'b') paddles.setterLeftDown();
-  if (key == CODED && key == 'C' || key == 'c') paddles.setterLeftStop();
-  */
+  if (key == CODED && key == 'A' || key == 'a') paddles.slowSpeed();
+  if (key == CODED && key == 'B' || key == 'b') paddles.mediumSpeed();
+  if (key == CODED && key == 'C' || key == 'c') paddles.fastSpeed();
 }//End keypressed()
 //
 void mousePressed()   
