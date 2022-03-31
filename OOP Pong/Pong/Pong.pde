@@ -40,9 +40,11 @@ void draw()
   //score.instructions();
   //if (geometryCheck == false) screenCheck.mediaQuiry(); 
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)
+    paddles.leftPaddlekeyPressed();
     ball[i].draw();
     ball[i].xDirectionSetter(paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
     ball[i].scoreSetter (paddles.leftScoreGetter(), paddles.rightScoreGetter());
+    paddles.playingModes(ball[i].xBallGetter(),ball[i].yBallGetter());
     //
     if (ball[i].leftBallGoalGetter() == true && leftScoreOff[i] == false) {
       paddles.leftScoreSetter();
@@ -69,9 +71,6 @@ void keyPressed()
   if (key == CODED && keyCode == UP) paddles.setterRightUp();
   if (key == CODED && keyCode == DOWN) paddles.setterRightDown();
   if (key == CODED && keyCode == LEFT) paddles.setterRightStop();
-  if (key == CODED && key == 'A' || key == 'a') paddles.slowSpeed();
-  if (key == CODED && key == 'B' || key == 'b') paddles.mediumSpeed();
-  if (key == CODED && key == 'C' || key == 'c') paddles.fastSpeed();
 }//End keypressed()
 //
 void mousePressed()   

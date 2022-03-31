@@ -70,10 +70,10 @@ class Ball
         yBall = height*1/2;
       }//Goal for right player
     }//End Net detection 
-    //
     if (xLeftBallGoal == true || xRightBallGoal == true) {
       move();
       bounceBall();
+      //ballScore();
     } else {
       //xMove = xSpeed*xDirection;
       //yMove = ySpeed*yDirection;
@@ -81,14 +81,16 @@ class Ball
       //yBall += yMove;
       move();
       bounceBall();
+      //ballScore();
     }
+    //
   }//End ballScore
   //Getters and setters
   int xBallGetter() {
-    return xStart;
+    return xBall;
   }//End ballXGetter
   int yBallGetter() {
-    return yStart;
+    return yBall;
   }//End ballYGetter
   Boolean leftBallGoalGetter() {
     return xLeftBallGoal;
@@ -98,28 +100,39 @@ class Ball
   }
   void xDirectionSetter( int xPaddleLeft, int yPaddleLeft, int xPaddleRight, int yPaddleRight, int paddleHeight, int paddleWidth) {
     //println( xPaddleLeft, yPaddleLeft, xPaddleRight, yPaddleRight, paddleHeight, paddleWidth);
-    if (xBall <= width*1/4) if (yBall >= xPaddleLeft && yBall <= yPaddleLeft+ paddleHeight) if (xBall <= xPaddleLeft + paddleWidth + diameter) xSpeed *= (-1);
-    //if ( xBall >= xPaddleRight && yBall > yPaddleRight && yBall < yPaddleRight+paddleHeight ) xMove *=-1;
-    if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xSpeed *= (-1);
+    //if (xBall <= width*1/4) if (yBall >= xPaddleLeft && yBall <= yPaddleLeft+ paddleHeight) if (xBall <= xPaddleLeft + paddleWidth + diameter) xSpeed *= (-1);
+    if ( xBall < xPaddleLeft + paddleWidth + (diameter*1/2) && yBall > yPaddleLeft && yBall < yPaddleLeft+paddleHeight ) xSpeed *= -1;
+    if ( xBall >= xPaddleRight && yBall > yPaddleRight && yBall < yPaddleRight+paddleHeight ) xSpeed *=-1;
+    //if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xSpeed *= (-1);
   }
   //
   void scoreSetter(int scoreLeft, int scoreRight) {
     if (scoreLeft == 5 || scoreRight == 5) {
       if (scoreRight == 5) {
+        background(colour);
+        paddles.paddleMoveReset();
+        xSpeed = 0;
+        ySpeed = 0;
         textAlign(CENTER);
         textSize(60);
         fill(#FF9558);
         text("WINNER", width/2, 150);
         fill(#FF9558);
         text("LEFT PLAYER WINS!", width/2, 250);
+        scoreLeft = 0;
       }
       if (scoreLeft == 5) {
+        background(colour);
+        paddles.paddleMoveReset();
+        xSpeed = 0;
+        ySpeed = 0;
         textAlign(CENTER);
         textSize(60);
         fill(#FF9558);
         text("WINNER", width/2, 150);
         fill(#FF9558);
         text("RIGHT PLAYER WINS!", width/2, 250);
+        scoreRight = 0;
       }
     }
   }

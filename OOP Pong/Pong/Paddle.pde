@@ -5,11 +5,11 @@
 class Paddle 
 { 
   private color colour, whiteColorReset = #000000;
-  private int xLeftPaddle, yLeftPaddle, xRightPaddle, yRightPaddle, widthPaddle, heightPaddle, paddleSpeed, yMove;
+  private int xLeftPaddle, yLeftPaddle, xRightPaddle, yRightPaddle, widthPaddle, heightPaddle, paddleSpeed = 0, yMove;
   private int leftScore = 0, rightScore = 0;
   private float yLeftScore, yRightScore, widthScore, heightScore, xLeftScore, xRightScore;
   private Boolean nightMode = false;
-  private Boolean leftUp = false, rightUp = false, leftDown = false, rightDown = false, leftStop = false, rightStop = false;
+  private Boolean leftUp = false, rightUp = false, leftDown = false, rightDown = false, leftStop = false, rightStop = false, screenSaver = false, singlePlayer = false ;
   //
   Paddle(float widthParameter, float heightParameter) {
     if (nightMode == false) this.colour = color(int(random(0, 255)), int(random(0, 255)), int(random(0, 255)));
@@ -29,9 +29,9 @@ class Paddle
     this.leftStop = false;
     this.rightStop = false;
     //Speed Variables
-    paddleSpeed = 10;
+    //paddleSpeed = 10;
     //paddleSpeedKeys();
-    this.yMove = int((heightParameter / heightParameter) * paddleSpeed);
+    //this.yMove = int((heightParameter / heightParameter) * paddleSpeed);
     //Variables to move the paddles
     //Variables for paddle speed
     yLeftScore = yRightScore = heightParameter*0;
@@ -45,6 +45,39 @@ class Paddle
     //playTheGame();
     leftPaddle();
     rightPaddle();
+  }
+  //
+  void playingModes(int xBallMove, int yBallMove) {
+    if (screenSaver == true) {
+      yLeftPaddle = yBallMove-heightPaddle*1/2;
+      yRightPaddle = yBallMove-heightPaddle*1/2;
+    }
+    if (singlePlayer == true) {
+      yLeftPaddle = yBallMove - heightPaddle*1/2;
+    }
+  }
+  void leftPaddlekeyPressed(){
+  
+    if (paddleSpeed == 0 ){
+      if (key=='T' || key=='t') {
+        screenSaver = true;
+        paddleSpeed = 20;
+        paddleSpeed = 20;
+      }
+    //
+    if (paddleSpeed == 0 ) {
+      if (key=='P' || key=='p') {
+        singlePlayer = true;
+        paddleSpeed = 5;
+      }
+      //
+       if (key=='S' || key=='s') paddleSpeed = 2;
+       if (key=='R' || key=='r') paddleSpeed = 5;
+       if (key=='F' || key=='f') paddleSpeed = 10;
+       this.yMove = int((height / height) * paddleSpeed);
+      }
+      //this.yMove = int((height / height) * paddleSpeed);
+    }
   }
   //
   void leftPaddle() {
@@ -172,15 +205,6 @@ class Paddle
   }
   int rightScoreGetter() {
     return rightScore;
-  }
-  public void slowSpeed() {
-    paddleSpeed = 1;
-  }
-  public void mediumSpeed() {
-    paddleSpeed = 3;
-  }
-  public void fastSpeed() {
-    paddleSpeed = 5;
   }
   //
   //
