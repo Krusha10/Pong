@@ -273,4 +273,36 @@ class Paddle
     exit();
     return "Please Rotate The Device";
   }
+  //
+  //
+  //
+  //
+  //
+  void instructions() {
+    String opening = "LET'S PLAY PONG";
+    String start = "--Click The Screen And Select Speed For The Paddles--";
+    String instructions1 = "* To select speed for paddles, prees s for slow, r for regular, f for fast ";
+    String singlePlayer = "* For single player (Computer VS. Player) : press p and select right paddle speed";
+    String screenSaver = "* For screen saver (Computer VS. Computer) : press t";
+
+    //textFont(titleFont);
+    textAlign(CENTER);
+
+    textSize(60);
+    fill(#62FF80);
+    text(opening, width/2, 150);
+    textSize(25);
+    fill(#FF0E05);
+    text(start, width/2, 240);
+    textSize(17);
+    fill(#FF0E05);
+    text(instructions1, width/2, 340);
+    text(singlePlayer, width/2, 400);
+    text(screenSaver, width/2, 430);
+  }
+  //
+  //
+  //
+  //
+  //
 }//End Paddle

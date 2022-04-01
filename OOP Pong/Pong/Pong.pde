@@ -36,6 +36,9 @@ void setup()
 //
 void draw() 
 { 
+  //if (geometryCheck == true) paddles.instructions();
+  background(#030303);
+  paddles.instructions();
   background(#030303);
   //score.instructions();
   //if (geometryCheck == false) screenCheck.mediaQuiry(); 
@@ -61,6 +64,7 @@ void draw()
 //
 void keyPressed() 
 {
+  paddles.leftPaddlekeyPressed();
   //User defined nightMode, In Ball class, will e referanced to other classes too
   //NightMode might be better as a Static variable
   //Press W-S-D for left paddle
