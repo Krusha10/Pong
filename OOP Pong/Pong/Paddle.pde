@@ -45,6 +45,10 @@ class Paddle
     //playTheGame();
     leftPaddle();
     rightPaddle();
+    //
+    if (leftScore == 2 || rightScore == 2) heightPaddle = int(height*1/5);
+    if (leftScore == 3 || rightScore == 3) heightPaddle = int(height*1/6); 
+    if (leftScore == 4 || rightScore == 4) heightPaddle = int(height*1/7);
   }
   //
   void playingModes(int xBallMove, int yBallMove) {

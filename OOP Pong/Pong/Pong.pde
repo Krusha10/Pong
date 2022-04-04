@@ -10,8 +10,8 @@ private Boolean[] rightScoreOff = new Boolean[ball.length];
 //
 void setup() 
 {
-  size(700, 500);
-  //fullScreen();
+  //size(700, 500);
+  fullScreen();
   //Screen size checker 
   //
   //constructor
@@ -38,8 +38,9 @@ void draw()
 { 
   //if (geometryCheck == true) paddles.instructions();
   background(#030303);
-  paddles.instructions();
-  background(#030303);
+  println(" To select speed for paddles, prees s for slow, r for regular, f for fast ");
+  println("For single player (Computer VS. Player) : press p and select right paddle speed");
+  println("For screen saver (Computer VS. Computer) : press t");
   //score.instructions();
   //if (geometryCheck == false) screenCheck.mediaQuiry(); 
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)
@@ -47,7 +48,7 @@ void draw()
     ball[i].draw();
     ball[i].xDirectionSetter(paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
     ball[i].scoreSetter (paddles.leftScoreGetter(), paddles.rightScoreGetter());
-    paddles.playingModes(ball[i].xBallGetter(),ball[i].yBallGetter());
+    paddles.playingModes(ball[i].xBallGetter(), ball[i].yBallGetter());
     //
     if (ball[i].leftBallGoalGetter() == true && leftScoreOff[i] == false) {
       paddles.leftScoreSetter();

@@ -114,11 +114,11 @@ class Ball
         xSpeed = 0;
         ySpeed = 0;
         textAlign(CENTER);
-        textSize(60);
+        textSize(width*1/30);
         fill(#FF9558);
-        text("WINNER", width/2, 150);
+        text("WINNER", width/2, width*1/5);
         fill(#FF9558);
-        text("LEFT PLAYER WINS!", width/2, 250);
+        text("LEFT PLAYER WINS!", width/2, width*1/4);
         scoreLeft = 0;
       }
       if (scoreLeft == 5) {
@@ -127,11 +127,11 @@ class Ball
         xSpeed = 0;
         ySpeed = 0;
         textAlign(CENTER);
-        textSize(60);
+        textSize(width*1/30);
         fill(#FF9558);
-        text("WINNER", width/2, 150);
+        text("WINNER", width/2, width*1/5);
         fill(#FF9558);
-        text("RIGHT PLAYER WINS!", width/2, 250);
+        text("RIGHT PLAYER WINS!", width/2, width*1/4);
         scoreRight = 0;
       }
     }
