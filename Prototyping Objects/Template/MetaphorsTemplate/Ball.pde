@@ -31,7 +31,8 @@ class Ball {
   //
   //Star Constructor 
   //Requires modifiers
-  Ball (float widthParameter, float heightParameter, float diameterParameter) {
+  Ball (float diameterParameter, float widthParameter, float heightParameter) {
+    //THIS is not used here
     xBall = int (widthParameter);//Casting here - truncating decimals
     yBall = int (heightParameter);
     diameter = int (diameterParameter);
