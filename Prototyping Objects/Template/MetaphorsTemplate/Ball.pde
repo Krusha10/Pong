@@ -4,6 +4,13 @@ class Ball {
   private color colour, colourReset = #FFFFFF; 
   private int xSpeed, ySpeed;
   private Boolean nightMode = false, xLeftBallGoal = false, xRightBallGoal = false;
+  private int NumberOfStars = 5;//version of a ststic variable in pure java, final here
+  Ball[] stars = new Ball [NumberOfStars];//Processing reqires #, pure java allows static variable
+  //
+  private int appWidth, appHeight;//final variables
+  private int smallerDisplayDimension;//final variables
+  //
+  private Boolean redo = true;
   //
   //int ballCount = 10; //knows how many instances of Ball there are
   //Not just myBall and yourBall
@@ -36,13 +43,17 @@ class Ball {
     xBall = int (widthParameter);//Casting here - truncating decimals
     yBall = int (heightParameter);
     diameter = int (diameterParameter);
-    colour = (nightMode == false) ? color( random(0, 255), random(255) ,random(255) ) : color( random(0, 255), random(255), random(0, 40));
+    colour = (nightMode == false) ? color( random(0, 255), random(255), random(255) ) : color( random(0, 255), random(255), random(0, 40));
+    appWidth = width;// switch to displayWidth if using fullScreen()
+    appHeight = height;// switch to displayHeight if using fullScreen()
+    smallerDisplayDimension = (appWidth <= appHeight) ? appWidth : appHeight;
   }//Constructor 
   //
   public void drawBall() {
     balldraw();
   }
   public void drawStar() {
+    star();
     balldraw();
   }
   public void balldraw() {
@@ -56,6 +67,44 @@ class Ball {
     //bounceOffPaddle();
   }//End draw
   //
+  public void star() {
+    while (redo == true) { 
+      for (int i = 0; i < stars.length; i++) {//Read entire object array
+        //Randomly choose paranmeters
+        float randomDiameter = random (smallerDisplayDimension*1/10, smallerDisplayDimension*1/5);//Consider user input
+        float randomX = random (0 + randomDiameter*1/2, appWidth - randomDiameter*1/2);//No stars in net(boundry)
+        float randomY = random (0 + randomDiameter*1/2, appHeight - randomDiameter*1/2); // Entire appHeight OK
+        stars[i] = new Ball(randomDiameter, randomX, randomY);
+        int j = i;
+        //
+        while (j >= 0) {
+          if ( stars[j].xBall < randomX - stars[j].diameter*1/2 &&  stars[j].xBall > randomX + stars[j].diameter*1/2) {
+            randomX = random ( randomDiameter*1/2, appWidth - randomDiameter*1/2);
+          }//End WHILE-X
+          j--;
+        }
+        //
+        stars[i] = new Ball(randomDiameter, randomX, randomY);
+        //
+        j = i;
+        while (j >= 0) {
+          if (stars[j].yBall < randomY - stars[j].diameter*1/2 &&  stars[j].yBall > randomY + stars[j].diameter*1/2) {
+            randomY = random (randomDiameter*1/2, appHeight - randomDiameter*1/2);
+          }//End IF
+          j--;
+        }//End WHILE
+        stars[i] = new Ball(randomDiameter, randomX, randomY);
+      }//End For population
+      redo = false;
+      //
+      for (int i = 0; i < stars.length; i++) {
+        for (int j = stars.length - 1; j > i; j--) {
+          if (stars[i].xBall+stars[i].diameter*1/2 < stars[j].xBall && stars[i].xBall-stars[i].diameter*1/2 > stars[j].xBall) redo = true;
+          if (stars[i].yBall+stars[i].diameter*1/2 < stars[j].yBall && stars[i].yBall-stars[i].diameter*1/2 > stars[j].yBall) redo = true;
+        }
+      }
+    }//End WHILE
+  }
   private void move() {
     xBall += xSpeed;
     yBall += ySpeed;
@@ -119,34 +168,34 @@ class Ball {
   //
   /*
   void scoreSetter(int scoreLeft, int scoreRight) {
-    if (scoreLeft == 5 || scoreRight == 5) {
-      if (scoreRight == 5) {
-        background(colour);
-        paddles.paddleMoveReset();
-        xSpeed = 0;
-        ySpeed = 0;
-        textAlign(CENTER);
-        textSize(width*1/30);
-        fill(#FF9558);
-        text("WINNER", width/2, width*1/5);
-        fill(#FF9558);
-        text("LEFT PLAYER WINS!", width/2, width*1/4);
-        scoreLeft = 0;
-      }
-      if (scoreLeft == 5) {
-        background(colour);
-        paddles.paddleMoveReset();
-        xSpeed = 0;
-        ySpeed = 0;
-        textAlign(CENTER);
-        textSize(width*1/30);
-        fill(#FF9558);
-        text("WINNER", width/2, width*1/5);
-        fill(#FF9558);
-        text("RIGHT PLAYER WINS!", width/2, width*1/4);
-        scoreRight = 0;
-      }
-    }
-  }
-  */
+   if (scoreLeft == 5 || scoreRight == 5) {
+   if (scoreRight == 5) {
+   background(colour);
+   paddles.paddleMoveReset();
+   xSpeed = 0;
+   ySpeed = 0;
+   textAlign(CENTER);
+   textSize(width*1/30);
+   fill(#FF9558);
+   text("WINNER", width/2, width*1/5);
+   fill(#FF9558);
+   text("LEFT PLAYER WINS!", width/2, width*1/4);
+   scoreLeft = 0;
+   }
+   if (scoreLeft == 5) {
+   background(colour);
+   paddles.paddleMoveReset();
+   xSpeed = 0;
+   ySpeed = 0;
+   textAlign(CENTER);
+   textSize(width*1/30);
+   fill(#FF9558);
+   text("WINNER", width/2, width*1/5);
+   fill(#FF9558);
+   text("RIGHT PLAYER WINS!", width/2, width*1/4);
+   scoreRight = 0;
+   }
+   }
+   }
+   */
 }//End Ball
