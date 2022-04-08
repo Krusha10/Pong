@@ -4,8 +4,8 @@ class Ball {
   private color colour, colourReset = #FFFFFF; 
   private int xSpeed, ySpeed;
   private Boolean nightMode = false, xLeftBallGoal = false, xRightBallGoal = false;
-  private int NumberOfStars = 5;//version of a ststic variable in pure java, final here
-  Ball[] stars = new Ball [NumberOfStars];//Processing reqires #, pure java allows static variable
+  //private int NumberOfStars = 5;//version of a ststic variable in pure java, final here
+  //Ball[] stars = new Ball [NumberOfStars];//Processing reqires #, pure java allows static variable
   //
   private int appWidth, appHeight;//final variables
   private int smallerDisplayDimension;//final variables
@@ -49,11 +49,52 @@ class Ball {
     smallerDisplayDimension = (appWidth <= appHeight) ? appWidth : appHeight;
   }//Constructor 
   //
+  /*
+  public void star() {
+    while (redo == true) { 
+      for (int i = 0; i < stars.length; i++) {//Read entire object array
+        //Randomly choose paranmeters
+        float randomDiameter = random (smallerDisplayDimension*1/10, smallerDisplayDimension*1/5);//Consider user input
+        float randomX = random (0 + randomDiameter*1/2, appWidth - randomDiameter*1/2);//No stars in net(boundry)
+        float randomY = random (0 + randomDiameter*1/2, appHeight - randomDiameter*1/2); // Entire appHeight OK
+        stars[i] = new Ball(randomDiameter, randomX, randomY);
+        int j = i;
+        //
+        while (j >= 0) {
+          if ( randomX - randomDiameter*1/2 > stars[j].xBall && randomX +randomDiameter*1/2 < stars[j].xBall) {
+            randomX = random ( randomDiameter*1/2, appWidth - randomDiameter*1/2);
+          }//End WHILE-X
+          j--;
+        }
+        //
+        stars[i] = new Ball(randomDiameter, randomX, randomY);
+        //
+        j = i;
+        while (j >= 0) {
+          if (randomY - randomDiameter*1/2 > stars[j].yBall && randomY + randomDiameter*1/2 < stars[j].yBall ) {
+            randomY = random (randomDiameter*1/2, appHeight - randomDiameter*1/2);
+          }//End IF
+          j--;
+        }//End WHILE
+        stars[i] = new Ball(randomDiameter, randomX, randomY);
+      }//End For population
+      redo = false;
+      //
+      for (int i = 0; i < stars.length; i++) {
+        for (int j = stars.length - 1; j > i; j--) {
+          if (stars[i].xBall + stars[i].diameter < stars[j].xBall && stars[j].xBall- stars[j].diameter > stars[i].xBall) redo = true;
+          if (stars[i].yBall + stars[i].diameter < stars[j].yBall && stars[j].yBall- stars[j].diameter > stars[i].yBall) redo = true;
+        }
+      }
+    }//End WHILE
+  }
+  */
+  //
   public void drawBall() {
     balldraw();
   }
   public void drawStar() {
-    star();
+    //star();
     balldraw();
   }
   public void balldraw() {
@@ -67,44 +108,7 @@ class Ball {
     //bounceOffPaddle();
   }//End draw
   //
-  public void star() {
-    while (redo == true) { 
-      for (int i = 0; i < stars.length; i++) {//Read entire object array
-        //Randomly choose paranmeters
-        float randomDiameter = random (smallerDisplayDimension*1/10, smallerDisplayDimension*1/5);//Consider user input
-        float randomX = random (0 + randomDiameter*1/2, appWidth - randomDiameter*1/2);//No stars in net(boundry)
-        float randomY = random (0 + randomDiameter*1/2, appHeight - randomDiameter*1/2); // Entire appHeight OK
-        stars[i] = new Ball(randomDiameter, randomX, randomY);
-        int j = i;
-        //
-        while (j >= 0) {
-          if ( stars[j].xBall < randomX - stars[j].diameter*1/2 &&  stars[j].xBall > randomX + stars[j].diameter*1/2) {
-            randomX = random ( randomDiameter*1/2, appWidth - randomDiameter*1/2);
-          }//End WHILE-X
-          j--;
-        }
-        //
-        stars[i] = new Ball(randomDiameter, randomX, randomY);
-        //
-        j = i;
-        while (j >= 0) {
-          if (stars[j].yBall < randomY - stars[j].diameter*1/2 &&  stars[j].yBall > randomY + stars[j].diameter*1/2) {
-            randomY = random (randomDiameter*1/2, appHeight - randomDiameter*1/2);
-          }//End IF
-          j--;
-        }//End WHILE
-        stars[i] = new Ball(randomDiameter, randomX, randomY);
-      }//End For population
-      redo = false;
-      //
-      for (int i = 0; i < stars.length; i++) {
-        for (int j = stars.length - 1; j > i; j--) {
-          if (stars[i].xBall+stars[i].diameter*1/2 < stars[j].xBall && stars[i].xBall-stars[i].diameter*1/2 > stars[j].xBall) redo = true;
-          if (stars[i].yBall+stars[i].diameter*1/2 < stars[j].yBall && stars[i].yBall-stars[i].diameter*1/2 > stars[j].yBall) redo = true;
-        }
-      }
-    }//End WHILE
-  }
+  //
   private void move() {
     xBall += xSpeed;
     yBall += ySpeed;
