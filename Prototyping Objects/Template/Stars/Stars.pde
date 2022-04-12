@@ -1,6 +1,6 @@
 //Global Variables and Objects
-//int NumberOfStars = 5;//version of a ststic variable in pure java, final here
-Ball[] stars = new Ball [5];//Processing reqires #, pure java allows static variable
+int NumberOfStars = 5;//version of a ststic variable in pure java, final here
+Ball[] stars = new Ball [NumberOfStars];//Processing reqires #, pure java allows static variable
 //Ball stars;
 //
 int appWidth, appHeight;//final variables
@@ -17,12 +17,13 @@ void setup() {
   //appHeight = height;// switch to displayHeight if using fullScreen()
   //smallerDisplayDimension = (appWidth <= appHeight) ? appWidth : appHeight;
   //
-  /*
+  
   for (int i = 0; i < stars.length; i++) {//Read entire object array
-    stars[i] = new Ball ( random(width*1/20, width*1/10), width, height); 
+    stars[i] = new Ball ( 50, width, height); 
   }//End For population
-  */
+  
   //
+  /*
   while (redo == true) { 
     for (int i = 0; i < stars.length; i++) {//Read entire object array
     //Randomly choose paranmeters
@@ -59,19 +60,19 @@ void setup() {
      }
    }
  }//End WHILE
-  
+ */
   //
 }//End setup()
 //
 void draw() {
-  /*
+  
   for (int i = 0; i < stars.length; i++) {//Read entire object array
    stars[i].drawStar();
-   }//End For population
-   */
-  for (Ball ball : stars) {
-     ball.drawStar();
-  }
+  }//End For population
+   
+  //for (Ball ball : stars) {
+    // ball.drawStar();
+  //}
 }//End Draw()
 //
 void keyPressed() {

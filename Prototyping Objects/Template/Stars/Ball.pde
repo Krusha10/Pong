@@ -44,13 +44,14 @@ class Ball {
     yBall = int (heightParameter);
     diameter = int (diameterParameter);
     colour = (nightMode == false) ? color( random(0, 255), random(255), random(255) ) : color( random(0, 255), random(255), random(0, 40));
-    appWidth = width;// switch to displayWidth if using fullScreen()
-    appHeight = height;// switch to displayHeight if using fullScreen()
-    smallerDisplayDimension = (appWidth <= appHeight) ? appWidth : appHeight;
+    //appWidth = width;// switch to displayWidth if using fullScreen()
+    //appHeight = height;// switch to displayHeight if using fullScreen()
+    //smallerDisplayDimension = (appWidth <= appHeight) ? appWidth : appHeight;
   }//Constructor 
   //
-  /*
+
   public void star() {
+    /*
     while (redo == true) { 
       for (int i = 0; i < stars.length; i++) {//Read entire object array
         //Randomly choose paranmeters
@@ -84,18 +85,32 @@ class Ball {
         for (int j = stars.length - 1; j > i; j--) {
           if (stars[i].xBall + stars[i].diameter < stars[j].xBall && stars[j].xBall- stars[j].diameter > stars[i].xBall) redo = true;
           if (stars[i].yBall + stars[i].diameter < stars[j].yBall && stars[j].yBall- stars[j].diameter > stars[i].yBall) redo = true;
-        }
-      }
-    }//End WHILE
-  }
-  */
+         }
+       }
+     }//End WHILE
+     */
+    
+    xBall += xMove * xDirection;
+    yBall += yMove * yDirection;
+    //
+    if (xBall < 0 || xBall > width) {
+      xDirection *= - width/width;
+      xMove += width/100;
+    }
+    if (yBall < 0 || yBall > height) {
+      yDirection *= - height/height;
+      yMove += height/50;
+    }
+    
+  }//End Star
+
   //
   public void drawBall() {
     balldraw();
   }
   public void drawStar() {
-    //star();
     balldraw();
+    star();
   }
   public void balldraw() {
     fill(colour);

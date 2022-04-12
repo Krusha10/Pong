@@ -1,7 +1,7 @@
 /* Ideas
  */
 /*
-class ScoreBoard {
+class ScoreBoard { 
   //Global Variables 
   private int leftScore, rightScore, xRightScore, yRightScore, widthScore, heightScore, xLeftScore, yLeftScore;
   //
