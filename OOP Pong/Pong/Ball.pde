@@ -60,19 +60,24 @@ class Ball
     //Ball knows where NET is 
     if ( xBall < (width*0) + diameter || xBall > width - diameter ) { //Net detection
       if ( xBall < (width*0) + diameter) {
-        xLeftBallGoal = true;
+        //Score
         xBall = width*1/2;
         yBall = height*1/2;
+        xLeftBallGoal = true;
       }//Goal for left player
       if ( xBall > width - diameter) {
-        xRightBallGoal = true;
+        //Score
         xBall = width*1/2;
         yBall = height*1/2;
+        xRightBallGoal = true;
       }//Goal for right player
     }//End Net detection 
+    //
     if (xLeftBallGoal == true || xRightBallGoal == true) {
       move();
       bounceBall();
+      //xDirection = int(random(2, -2));
+      //yDirection = int(random(2, -2));
       //ballScore();
     } else {
       //xMove = xSpeed*xDirection;
@@ -84,7 +89,12 @@ class Ball
       //ballScore();
     }
     //
+    //
   }//End ballScore
+  //
+  void ballCollisions() {
+    //
+  }//End ballCollisions
   //Getters and setters
   int xBallGetter() {
     return xBall;
@@ -109,7 +119,7 @@ class Ball
   void scoreSetter(int scoreLeft, int scoreRight) {
     if (scoreLeft == 5 || scoreRight == 5) {
       if (scoreRight == 5) {
-        background(colour);
+        background(#000000);
         paddles.paddleMoveReset();
         xSpeed = 0;
         ySpeed = 0;
@@ -122,7 +132,7 @@ class Ball
         scoreLeft = 0;
       }
       if (scoreLeft == 5) {
-        background(colour);
+        background(#000000);
         paddles.paddleMoveReset();
         xSpeed = 0;
         ySpeed = 0;

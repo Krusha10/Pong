@@ -10,8 +10,8 @@ private Boolean[] rightScoreOff = new Boolean[ball.length];
 //
 void setup() 
 {
-  //size(700, 500);
-  fullScreen();
+  size(700, 500);
+  //fullScreen();
   //Screen size checker 
   //
   //constructor
@@ -48,6 +48,7 @@ void draw()
     ball[i].draw();
     ball[i].xDirectionSetter(paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
     ball[i].scoreSetter (paddles.leftScoreGetter(), paddles.rightScoreGetter());
+    //ballCollisions.ballObjects(ball[i].xBallGetter(), ball[i].yBallGetter());
     paddles.playingModes(ball[i].xBallGetter(), ball[i].yBallGetter());
     //
     if (ball[i].leftBallGoalGetter() == true && leftScoreOff[i] == false) {
