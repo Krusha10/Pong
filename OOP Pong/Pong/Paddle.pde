@@ -131,8 +131,8 @@ class Paddle
     if (yRightPaddle <= height*0) yRightPaddle = 0;
     if (yRightPaddle >= height - heightPaddle) yRightPaddle = height - heightPaddle;
     //
-    textDraw(height, colour, CENTER, CENTER, titleFont, str(rightScore), xLeftScore, yLeftScore, widthScore, heightScore);
     textDraw(height, colour, CENTER, CENTER, titleFont, str(leftScore), xRightScore, yRightScore, widthScore, heightScore);
+    textDraw(height, colour, CENTER, CENTER, titleFont, str(rightScore), xLeftScore, yLeftScore, widthScore, heightScore);
   }//End paddleMove
   //
   //IDEAS:
@@ -273,6 +273,10 @@ class Paddle
 
   String adjustScreen()
   {
+    textAlign(CENTER);
+    textSize(width*1/30);
+    fill(#FF9558);
+    text("Please ROTATE your screen", width/2, width*1/5);
     noLoop();
     exit();
     return "Please Rotate The Device";

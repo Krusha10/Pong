@@ -7,7 +7,7 @@ class Ball
   //Global variables
   private int xBall, yBall, diameter, xMove, yMove, xStart, yStart, xDirection = 0, yDirection = 0; 
   private color colour, colourReset = #FFFFFF; 
-  private int xSpeed, ySpeed;
+  private int xSpeed, ySpeed, leftGoalScore = 0, rightGoalScore = 0;
   private Boolean nightMode = false, xLeftBallGoal = false, xRightBallGoal = false;
   //
   //int ballCount = 10; //knows how many instances of Ball there are
@@ -64,12 +64,14 @@ class Ball
         xBall = width*1/2;
         yBall = height*1/2;
         xLeftBallGoal = true;
+        //leftGoalScore++;
       }//Goal for left player
       if ( xBall > width - diameter) {
         //Score
         xBall = width*1/2;
         yBall = height*1/2;
         xRightBallGoal = true;
+        //rightGoalScore++;
       }//Goal for right player
     }//End Net detection 
     //

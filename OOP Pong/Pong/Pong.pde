@@ -47,10 +47,11 @@ void draw()
     paddles.leftPaddlekeyPressed();
     ball[i].draw();
     ball[i].xDirectionSetter(paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
-    ball[i].scoreSetter (paddles.leftScoreGetter(), paddles.rightScoreGetter());
+    //ball[i].scoreSetter (paddles.leftScoreGetter(), paddles.rightScoreGetter());
     //ballCollisions.ballObjects(ball[i].xBallGetter(), ball[i].yBallGetter());
     paddles.playingModes(ball[i].xBallGetter(), ball[i].yBallGetter());
     //
+    
     if (ball[i].leftBallGoalGetter() == true && leftScoreOff[i] == false) {
       paddles.leftScoreSetter();
       leftScoreOff[i] = true;
@@ -59,6 +60,7 @@ void draw()
       paddles.rightScoreSetter();
       rightScoreOff[i] = true;
     }
+    
   }//End ball.draw
   //ballCollisions();
   paddles.draw();
