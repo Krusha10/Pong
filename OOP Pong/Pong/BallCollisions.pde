@@ -1,5 +1,0 @@
-/*
-void ballCollisions() {
-  // 
-}//End ballCollisions
-*/
