@@ -1,12 +1,16 @@
 // Global variables 
 final int ballCount = 10; // Hack for static variable, see Ball class
+final int numberOfStars = 1;
 Ball[] ball = new Ball[ballCount];//Not just array, but an array list, includes code and variables
+Ball[] stars = new Ball [numberOfStars];
 int ballCounter = ball.length - ball.length;//Way to get 0 using another value
 Paddle paddles;
 //ScoreBoard score;
-Boolean geometryCheck = false; 
+Boolean geometryCheck = false, redo = true; 
 private Boolean[] leftScoreOff = new Boolean[ball.length];
 private Boolean[] rightScoreOff = new Boolean[ball.length];
+int appWidth, appHeight;//final variables
+int smallerDisplayDimension;//final variables
 //
 void setup() 
 {
@@ -20,6 +24,8 @@ void setup()
   paddles = new Paddle(width, height);
   if (geometryCheck == false) paddles.mediaQuiry();
   paddles.textSetup();
+  display();
+  starsPopulation();
   //score = new ScoreBoard(0,0); 
   //Instead of using myBall and yourBall, ball[0]
   //
@@ -38,32 +44,36 @@ void draw()
 { 
   //if (geometryCheck == true) paddles.instructions();
   background(#030303);
-  println(" To select speed for paddles, prees s for slow, r for regular, f for fast ");
-  println("For single player (Computer VS. Player) : press p and select right paddle speed");
-  println("For screen saver (Computer VS. Computer) : press t");
+  //println(" To select speed for paddles, prees s for slow, r for regular, f for fast ");
+  //println("For single player (Computer VS. Player) : press p and select right paddle speed");
+  //println("For screen saver (Computer VS. Computer) : press t");
   //score.instructions();
   //if (geometryCheck == false) screenCheck.mediaQuiry(); 
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)
     paddles.leftPaddlekeyPressed();
-    ball[i].draw();
+    ball[i].drawBall();
     ball[i].xDirectionSetter(paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
-    //ball[i].scoreSetter (paddles.leftScoreGetter(), paddles.rightScoreGetter());
+    ball[i].scoreSetter (paddles.leftScoreGetter(), paddles.rightScoreGetter());
     //ballCollisions.ballObjects(ball[i].xBallGetter(), ball[i].yBallGetter());
     paddles.playingModes(ball[i].xBallGetter(), ball[i].yBallGetter());
     //
-    
+    //BUG : NEEDS TO BE FIXED : IF STATMENT IS NOT WORKING
     if (ball[i].leftBallGoalGetter() == true && leftScoreOff[i] == false) {
       paddles.leftScoreSetter();
+      println("goal");
       leftScoreOff[i] = true;
     }
     if (ball[i].rightBallGoalGetter() == true && rightScoreOff[i] == false) {
       paddles.rightScoreSetter();
+      println("goal");
       rightScoreOff[i] = true;
     }
-    
   }//End ball.draw
   //ballCollisions();
   paddles.draw();
+  for (Ball star : stars) {
+    star.drawStar();
+  }
 }//End draw()
 //
 void keyPressed() 
@@ -91,7 +101,12 @@ void mousePressed()
   }
   for (int i = ballCounter - 1; i < ballCounter; i++) { //Constructor for other ball objects could be a button
     ball[i] = new Ball(width, height);  
-    ball[i].draw();
+    ball[i].drawBall();
   }//End Constructor
+  //
+  for (int i = 0; i < stars.length; i++) {
+    stars[i].setTargetX(mouseX); //Value of mouse-click
+    stars[i].setTargetY(mouseY); //Value of mouse-click
+  }//End FOR LOOP
 }//End mousePressed()
 //

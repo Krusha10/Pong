@@ -5,7 +5,7 @@
 class Ball 
 {
   //Global variables
-  private int xBall, yBall, diameter, xMove, yMove, xStart, yStart, xDirection = 0, yDirection = 0; 
+  private int xBall, yBall, diameter, xMove, yMove, xStart, yStart, xDirection = 0, yDirection = 0, targetX, targetY; 
   private color colour, colourReset = #FFFFFF; 
   private int xSpeed, ySpeed, leftGoalScore = 0, rightGoalScore = 0;
   private Boolean nightMode = false, xLeftBallGoal = false, xRightBallGoal = false;
@@ -34,7 +34,17 @@ class Ball
     while (yDirection == 0) yDirection = int(random(-2, 2));
   }//End Constructor
   //
-  public void draw() {
+  Ball (float diameterParameter, float widthParameter, float heightParameter) {
+    //THIS is not used here
+    xBall = int (widthParameter);//Casting here - truncating decimals
+    yBall = int (heightParameter);
+    targetX = xBall;
+    targetY = yBall;
+    diameter = int (diameterParameter);
+    colour = (nightMode == false) ? color( random(0, 255), random(255), random(255) ) : color( random(0, 255), random(255), random(0, 40));
+  }//Constructor
+  //
+  public void drawBall() {
     fill(colour);
     ellipse(xBall, yBall, diameter, diameter);
     fill(colourReset);
@@ -44,6 +54,10 @@ class Ball
     //bounceBall();
     //bounceOffPaddle();
   }//End draw
+  public void drawStar() {
+    drawBall();
+    starChase();
+  }//End drawStar
   //
   private void move() {
     xBall += xSpeed;
@@ -64,6 +78,7 @@ class Ball
         xBall = width*1/2;
         yBall = height*1/2;
         xLeftBallGoal = true;
+        //println("goal");
         //leftGoalScore++;
       }//Goal for left player
       if ( xBall > width - diameter) {
@@ -71,25 +86,18 @@ class Ball
         xBall = width*1/2;
         yBall = height*1/2;
         xRightBallGoal = true;
+        //println("goal");
         //rightGoalScore++;
       }//Goal for right player
     }//End Net detection 
     //
     if (xLeftBallGoal == true || xRightBallGoal == true) {
-      move();
-      bounceBall();
-      //xDirection = int(random(2, -2));
-      //yDirection = int(random(2, -2));
-      //ballScore();
-    } else {
-      //xMove = xSpeed*xDirection;
-      //yMove = ySpeed*yDirection;
-      //xBall += xMove;
-      //yBall += yMove;
-      move();
-      bounceBall();
-      //ballScore();
-    }
+     move();
+     bounceBall();
+     } else {
+     move();
+     bounceBall();
+     }
     //
     //
   }//End ballScore
@@ -97,6 +105,20 @@ class Ball
   void ballCollisions() {
     //
   }//End ballCollisions
+  //
+  void starChase() {
+    //45-degree movement, i.e. slope = 1/1
+    if (xBall < targetX) {
+      xBall++;
+    } else {
+      xBall--;
+    }//End X-value IF
+    if (yBall < targetY) {
+      yBall++;
+    } else {
+      yBall--;
+    }//End Y-value IF
+  }//End starChase
   //Getters and setters
   int xBallGetter() {
     return xBall;
@@ -117,6 +139,14 @@ class Ball
     if ( xBall >= xPaddleRight && yBall > yPaddleRight && yBall < yPaddleRight+paddleHeight ) xSpeed *=-1;
     //if (xBall >= width*3/4) if (yBall >= yPaddleRight && yBall <= yPaddleRight + paddleHeight) if (xBall >= xPaddleRight - diameter) xSpeed *= (-1);
   }
+  //
+  void setTargetX(int iParameter) {
+    targetX = iParameter;
+  }//End setTargetX
+  //
+  void setTargetY(int iParameter) {
+    targetY = iParameter;
+  }//End setTargetY
   //
   void scoreSetter(int scoreLeft, int scoreRight) {
     if (scoreLeft == 5 || scoreRight == 5) {
