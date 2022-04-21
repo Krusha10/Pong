@@ -72,33 +72,28 @@ class Ball
   private void ballScore() {
     //Intro to empty IF
     //Ball knows where NET is 
+    move();
+    bounceBall();
+    //
     if ( xBall < (width*0) + diameter || xBall > width - diameter ) { //Net detection
       if ( xBall < (width*0) + diameter) {
         //Score
+        xLeftBallGoal = true;
         xBall = width*1/2;
         yBall = height*1/2;
-        xLeftBallGoal = true;
-        //println("goal");
-        //leftGoalScore++;
       }//Goal for left player
       if ( xBall > width - diameter) {
         //Score
+        xRightBallGoal = true;
         xBall = width*1/2;
         yBall = height*1/2;
-        xRightBallGoal = true;
-        //println("goal");
-        //rightGoalScore++;
       }//Goal for right player
     }//End Net detection 
     //
     if (xLeftBallGoal == true || xRightBallGoal == true) {
-     move();
-     bounceBall();
-     } else {
-     move();
-     bounceBall();
-     }
-    //
+    } else {
+      move();
+    }
     //
   }//End ballScore
   //
@@ -126,12 +121,14 @@ class Ball
   int yBallGetter() {
     return yBall;
   }//End ballYGetter
+  
   Boolean leftBallGoalGetter() {
     return xLeftBallGoal;
   }
   Boolean rightBallGoalGetter() {
     return xRightBallGoal;
   }
+  
   void xDirectionSetter( int xPaddleLeft, int yPaddleLeft, int xPaddleRight, int yPaddleRight, int paddleHeight, int paddleWidth) {
     //println( xPaddleLeft, yPaddleLeft, xPaddleRight, yPaddleRight, paddleHeight, paddleWidth);
     //if (xBall <= width*1/4) if (yBall >= xPaddleLeft && yBall <= yPaddleLeft+ paddleHeight) if (xBall <= xPaddleLeft + paddleWidth + diameter) xSpeed *= (-1);

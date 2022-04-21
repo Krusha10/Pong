@@ -7,8 +7,8 @@ int ballCounter = ball.length - ball.length;//Way to get 0 using another value
 Paddle paddles;
 //ScoreBoard score;
 Boolean geometryCheck = false, redo = true; 
-private Boolean[] leftScoreOff = new Boolean[ball.length];
-private Boolean[] rightScoreOff = new Boolean[ball.length];
+Boolean[] leftScoreOff = new Boolean[ball.length];
+Boolean[] rightScoreOff = new Boolean[ball.length];
 int appWidth, appHeight;//final variables
 int smallerDisplayDimension;//final variables
 //
