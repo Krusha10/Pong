@@ -13,7 +13,8 @@ class Paddle
   //
   Paddle(float widthParameter, float heightParameter) {
     if (nightMode == false) this.colour = color(int(random(0, 255)), int(random(0, 255)), int(random(0, 255)));
-    if (nightMode == true) this.colour = color(int(random(0, 255)), int(random(0, 255)), 0);
+    if (nightMode == true) colour = color(#EEFF6F);
+    //if (nightMode == true) this.colour = color(int(random(0, 255)), int(random(0, 255)), 0);
     //Game starts, paddles in the middle
     widthPaddle = int(heightParameter*3/80);
     heightPaddle = int(heightParameter*1/4);
@@ -198,11 +199,13 @@ class Paddle
   int widthPaddleGetter() {
     return widthPaddle;
   }
-  void leftScoreSetter() {
+  void leftScoreSetter(Boolean lGoal) {
     leftScore++;
+    lGoal = false;
   }
-  void rightScoreSetter() {
+  void rightScoreSetter(Boolean rGoal) {
     rightScore++;
+    rGoal = false;
   }
   int leftScoreGetter() {
     return leftScore;

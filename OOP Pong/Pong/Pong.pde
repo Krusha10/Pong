@@ -7,10 +7,9 @@ int ballCounter = ball.length - ball.length;//Way to get 0 using another value
 Paddle paddles;
 //ScoreBoard score;
 Boolean geometryCheck = false, redo = true; 
-Boolean[] leftScoreOff = new Boolean[ball.length];
-Boolean[] rightScoreOff = new Boolean[ball.length];
 int appWidth, appHeight;//final variables
 int smallerDisplayDimension;//final variables
+Boolean nightMode = false;
 //
 void setup() 
 {
@@ -31,10 +30,8 @@ void setup()
   //
   ballCounter++;//ballCounter += 1;
   //
-  for (int i=0; i<ball.length; i++) {
-    leftScoreOff[i] = false;
-    rightScoreOff[i] = false;
-  }
+  /*
+  */
   //Paddle();
   //exit(); //Exit button TBA
 }//End Setup()
@@ -44,29 +41,30 @@ void draw()
 { 
   //if (geometryCheck == true) paddles.instructions();
   background(#030303);
-  //println(" To select speed for paddles, prees s for slow, r for regular, f for fast ");
-  //println("For single player (Computer VS. Player) : press p and select right paddle speed");
-  //println("For screen saver (Computer VS. Computer) : press t");
+  println(" To select speed for paddles, prees s for slow, r for regular, f for fast ");
+  println("For single player (Computer VS. Player) : press p and select right paddle speed");
+  println("For screen saver (Computer VS. Computer) : press t");
   //score.instructions();
   //if (geometryCheck == false) screenCheck.mediaQuiry(); 
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)
+    ball[i].printText();
     paddles.leftPaddlekeyPressed();
     ball[i].drawBall();
     ball[i].xDirectionSetter(paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());
     ball[i].scoreSetter (paddles.leftScoreGetter(), paddles.rightScoreGetter());
-    //ballCollisions.ballObjects(ball[i].xBallGetter(), ball[i].yBallGetter());
     paddles.playingModes(ball[i].xBallGetter(), ball[i].yBallGetter());
     //
     //BUG : NEEDS TO BE FIXED : IF STATMENT IS NOT WORKING
-    if (ball[i].leftBallGoalGetter() == true && leftScoreOff[i] == false) {
-      paddles.leftScoreSetter();
+    if (ball[i].leftBallGoalGetter() == true ) {
       println("goal");
-      leftScoreOff[i] = true;
+      paddles.leftScoreSetter(ball[i].leftBallGoalGetter());
+      ball[i].xLeftBallGoal = false;
     }
-    if (ball[i].rightBallGoalGetter() == true && rightScoreOff[i] == false) {
-      paddles.rightScoreSetter();
+    if (ball[i].rightBallGoalGetter() == true ) {
       println("goal");
-      rightScoreOff[i] = true;
+      paddles.rightScoreSetter(ball[i].rightBallGoalGetter());
+      ball[i].xRightBallGoal = false;
+      //rightScoreOff[i] = true;
     }
   }//End ball.draw
   //ballCollisions();
@@ -89,6 +87,10 @@ void keyPressed()
   if (key == CODED && keyCode == UP) paddles.setterRightUp();
   if (key == CODED && keyCode == DOWN) paddles.setterRightDown();
   if (key == CODED && keyCode == LEFT) paddles.setterRightStop();
+  if (key == CODED && key == 'O' || key == 'o') {
+    paddles.paddleMove();
+  }
+  if (key == CODED && key == 'N' || key == 'n') paddles.nightMode = true;
 }//End keypressed()
 //
 void mousePressed()   

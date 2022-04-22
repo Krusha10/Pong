@@ -90,6 +90,7 @@ class Ball
     }//End Net detection 
     //
     if (xLeftBallGoal == true || xRightBallGoal == true) {
+      //
     } else {
       move();
     }
@@ -97,7 +98,12 @@ class Ball
   }//End ballScore
   //
   void ballCollisions() {
-   //
+    //
+    for (int i = 0; i < ball.length; i++) {
+      if (dist(ball[i].xBall, ball[i].yBall, xBall, yBall) < diameter*1/2 + diameter) {
+        xSpeed *= -1;
+      }
+    }
   }//End ballCollisions
   //
   void starChase() {
@@ -144,10 +150,19 @@ class Ball
     targetY = iParameter;
   }//End setTargetY
   //
+  void printText() {
+    textAlign(CENTER);
+    textSize(width*1/30);
+    fill(#FF9558);
+    text("Press 'o' to turn on night mode", width/2, width*1/5);
+    fill(#FF9558);
+    text("LEFT PLAYER WINS!", width/2, width*1/4);
+  }
+  //
   void scoreSetter(int scoreLeft, int scoreRight) {
     if (scoreLeft == 5 || scoreRight == 5) {
       if (scoreRight == 5) {
-        background(#000000);
+        background(#A58C8C);
         paddles.paddleMoveReset();
         xSpeed = 0;
         ySpeed = 0;
@@ -160,7 +175,7 @@ class Ball
         scoreLeft = 0;
       }
       if (scoreLeft == 5) {
-        background(#000000);
+        background(#A58C8C);
         paddles.paddleMoveReset();
         xSpeed = 0;
         ySpeed = 0;
