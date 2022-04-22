@@ -1,7 +1,6 @@
 /* Ideas
  change the ball color as game proceeds
  */
-
 class Ball 
 {
   //Global variables
@@ -98,7 +97,7 @@ class Ball
   }//End ballScore
   //
   void ballCollisions() {
-    //
+   //
   }//End ballCollisions
   //
   void starChase() {
@@ -121,14 +120,14 @@ class Ball
   int yBallGetter() {
     return yBall;
   }//End ballYGetter
-  
+
   Boolean leftBallGoalGetter() {
     return xLeftBallGoal;
   }
   Boolean rightBallGoalGetter() {
     return xRightBallGoal;
   }
-  
+
   void xDirectionSetter( int xPaddleLeft, int yPaddleLeft, int xPaddleRight, int yPaddleRight, int paddleHeight, int paddleWidth) {
     //println( xPaddleLeft, yPaddleLeft, xPaddleRight, yPaddleRight, paddleHeight, paddleWidth);
     //if (xBall <= width*1/4) if (yBall >= xPaddleLeft && yBall <= yPaddleLeft+ paddleHeight) if (xBall <= xPaddleLeft + paddleWidth + diameter) xSpeed *= (-1);
