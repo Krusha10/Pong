@@ -47,7 +47,7 @@ void draw()
   //score.instructions();
   //if (geometryCheck == false) screenCheck.mediaQuiry(); 
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)
-    ball[i].printText();
+    //ball[i].printText();
     paddles.leftPaddlekeyPressed();
     ball[i].drawBall();
     ball[i].xDirectionSetter(paddles.xLeftPaddleGetter(), paddles.yLeftPaddleGetter(), paddles.xRightPaddleGetter(), paddles.yRightPaddleGetter(), paddles.heightPaddleGetter(), paddles.widthPaddleGetter());

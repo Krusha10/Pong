@@ -45,10 +45,11 @@ class Ball
   //
   public void drawBall() {
     fill(colour);
-    ellipse(xBall, yBall, diameter, diameter);
+    ellipse(xBall, yBall, diameter*2, diameter*2);
     fill(colourReset);
     //
     ballScore();
+    ballCollisions();
     //move();
     //bounceBall();
     //bounceOffPaddle();
@@ -99,11 +100,21 @@ class Ball
   //
   void ballCollisions() {
     //
-    for (int i = 0; i < ball.length; i++) {
-      if (dist(ball[i].xBall, ball[i].yBall, xBall, yBall) < diameter*1/2 + diameter) {
-        xSpeed *= -1;
+    /*
+    for (int i = 0; i < ball.length-1; i++) {
+      Ball ball1 = ball[i];
+      for (int j = i+1; j < ball.length; j++) {
+        Ball ball2 = ball[j];
+        float dx = ball2.xBall - ball1.xBall;
+        float dy = ball2.yBall - ball1.yBall;
+        float distance = sqrt(sq(dx) + sq(dy));
+        if (distance < ball1.diameter*1/2 + ball2.diameter*1/2) {
+          xSpeed = xSpeed * -1;
+          ySpeed = ySpeed * -1;
+        }
       }
     }
+    */
   }//End ballCollisions
   //
   void starChase() {
