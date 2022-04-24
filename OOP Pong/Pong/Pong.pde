@@ -39,11 +39,11 @@ void setup()
 //
 void draw() 
 { 
-  //if (geometryCheck == true) paddles.instructions();
   background(#030303);
   println(" To select speed for paddles, prees s for slow, r for regular, f for fast ");
   println("For single player (Computer VS. Player) : press p and select right paddle speed");
   println("For screen saver (Computer VS. Computer) : press t");
+  println("The game is best of 5, whoever scores 5 first wins the game.");
   //score.instructions();
   //if (geometryCheck == false) screenCheck.mediaQuiry(); 
   for (int i = 0; i < ballCounter; i++) {//Controls each ball of all 10(ballCount)

@@ -4,7 +4,7 @@
 class Ball 
 {
   //Global variables
-  private int xBall, yBall, diameter, xMove, yMove, xStart, yStart, xDirection = 0, yDirection = 0, targetX, targetY; 
+  private int xBall, yBall, diameter, diameterChase, xMove, yMove, xStart, yStart, xDirection = 0, yDirection = 0, targetX, targetY; 
   private color colour, colourReset = #FFFFFF; 
   private int xSpeed, ySpeed, leftGoalScore = 0, rightGoalScore = 0;
   private Boolean nightMode = false, xLeftBallGoal = false, xRightBallGoal = false;
@@ -40,12 +40,13 @@ class Ball
     targetX = xBall;
     targetY = yBall;
     diameter = int (diameterParameter);
+    diameterChase = int(diameterParameter);
     colour = (nightMode == false) ? color( random(0, 255), random(255), random(255) ) : color( random(0, 255), random(255), random(0, 40));
   }//Constructor
   //
   public void drawBall() {
     fill(colour);
-    ellipse(xBall, yBall, diameter*2, diameter*2);
+    ellipse(xBall, yBall, diameter, diameter);
     fill(colourReset);
     //
     ballScore();
@@ -54,9 +55,21 @@ class Ball
     //bounceBall();
     //bounceOffPaddle();
   }//End draw
+  public void drawChaseBall() {
+    fill(colour);
+    ellipse(targetX, targetY, diameterChase, diameterChase);
+    fill(colourReset);
+    //
+    //ballScore();
+    //ballCollisions();
+    //move();
+    //bounceBall();
+    //bounceOffPaddle();
+  }//End draw
   public void drawStar() {
-    drawBall();
+    drawChaseBall();
     starChase();
+    ballCollisions();
   }//End drawStar
   //
   private void move() {
@@ -99,22 +112,11 @@ class Ball
   }//End ballScore
   //
   void ballCollisions() {
-    //
-    /*
-    for (int i = 0; i < ball.length-1; i++) {
-      Ball ball1 = ball[i];
-      for (int j = i+1; j < ball.length; j++) {
-        Ball ball2 = ball[j];
-        float dx = ball2.xBall - ball1.xBall;
-        float dy = ball2.yBall - ball1.yBall;
-        float distance = sqrt(sq(dx) + sq(dy));
-        if (distance < ball1.diameter*1/2 + ball2.diameter*1/2) {
-          xSpeed = xSpeed * -1;
-          ySpeed = ySpeed * -1;
-        }
-      }
+    //Need to fix
+    if (dist(xBall, yBall, targetX, targetY) < diameterChase*1/2 + diameter*1/2) {
+      xSpeed *= -1;
+      ySpeed *= -1;
     }
-    */
   }//End ballCollisions
   //
   void starChase() {
