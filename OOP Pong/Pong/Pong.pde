@@ -13,8 +13,8 @@ Boolean nightMode = false;
 //
 void setup() 
 {
-  size(700, 500);
-  //fullScreen();
+  //size(700, 500);
+  fullScreen();
   //Screen size checker 
   //
   //constructor
